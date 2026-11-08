@@ -6,6 +6,8 @@
 
 <p align="center">
   <a href="https://receipts-check.fly.dev"><b>Live: receipts-check.fly.dev</b></a> ·
+  <a href="https://receipts-check.fly.dev/demo">Guided demo</a> ·
+  <a href="docs/MCP.md">Add to your agent (MCP)</a> ·
   <a href="#how-it-works">How it works</a> ·
   <a href="#what-it-caught">What it caught</a> ·
   <a href="#run-it-yourself">Run it</a>
@@ -32,7 +34,23 @@ Four steps. The page animates each one live, so you can see which sponsor model 
 | **03 Read** | **Meta** `muse-spark-1.3` | Reads the final message plus the **whole** log, lists every checkable claim, and quotes the exact log line behind each one. Quotes are checked word for word against the log. | Real CI logs are long (the GitHub case below is ~400 lines across 4 failed jobs). Muse takes the full log in one call, so nothing gets chunked and lost. |
 | **04 Rule** | **Subquadratic** `subq-snap-1.1` | One call rules on every claim: backed, contradicted or never ran, with a probability for each. About 0.4 s. | Snap is a decision model: it returns a choice with calibrated probabilities, not prose. That's what a merge gate needs. |
 
-There are three ways in:
+## Add it to your agent (MCP)
+
+receipts is also an MCP server, so your agent checks itself **before** it tells you it's done. It's one file with no dependencies and needs no model keys:
+
+```bash
+curl -o ~/receipts_mcp.py https://raw.githubusercontent.com/elsisiem/receipts/master/mcp/receipts_mcp.py
+claude mcp add receipts -- python3 ~/receipts_mcp.py
+```
+
+Tools: `receipts_run_and_check(message, command)` runs your tests and checks the message against the real output. `receipts_check(message, log)` checks against a log you already have. Cursor, Windsurf, the automatic setup and the API are covered in **[docs/MCP.md](docs/MCP.md)**.
+
+## Demo
+
+- **[/demo](https://receipts-check.fly.dev/demo)**: a keyboard-driven walkthrough of the live site. Press → / space to advance. Each step scrolls to the exact spot, spotlights it, and shows one line to say. Step 8 is the moment GitHub's agent gets caught. N hides the notes, Esc exits.
+- **[docs/receipts_walkthrough.mp4](docs/receipts_walkthrough.mp4)**: a 65 s captioned recording with a real live run, made by `tools/tour.py`.
+
+There are three ways to use it:
 - **Live agent:** pick a ticket and watch Gemini write the code, then watch receipts check it.
 - **Paste your own:** paste any agent's final message and its log (Claude Code, Cursor, Copilot, Devin). receipts skips steps 01–02.
 - **Import a real PR:** `python3 tools/import_pr.py <github PR url>` uses the PR description as the message and the failed CI job logs as the log.
@@ -69,9 +87,11 @@ Each run is saved under `runs_evidence/<id>/` with `final_message.md`, `session.
 | file | what |
 |---|---|
 | `receipts.py` | the pipeline: Gemini agent, sandbox run, Muse claims, Snap rulings, streamed as events |
-| `server.py` | stdlib HTTP server; `POST /api/run` streams each step to the page (server-sent events) |
+| `server.py` | stdlib HTTP server; `POST /api/run` streams each step to the page (server-sent events); `POST /api/check` returns JSON for the MCP server; `/demo` is presenter mode |
 | `index.html` | the page |
 | `tools/import_pr.py` | import a real agent-written PR and its CI logs |
+| `mcp/receipts_mcp.py` | the MCP server (stdio, standard library only) |
+| `tools/tour.py` | records the captioned walkthrough video |
 | `runs_evidence/` | every recorded run |
 
 **Deploy:** `fly deploy`. The keys are Fly secrets. The public site allows two live runs at a time and one run per visitor every 20 s, because every run spends real API credits.

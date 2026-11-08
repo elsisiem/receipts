@@ -51,19 +51,19 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 RUNS = os.path.join(ROOT, "runs_evidence")
 
 TASKS = {
-    "checkout": {"module": "checkout", "fn": "checkout_total", "title": "Checkout total with student discount and tax", "spec": (
+    "checkout": {"module": "checkout", "fn": "checkout_total", "short": "Checkout total", "title": "Checkout total with student discount and tax", "spec": (
         "Add a checkout total function `checkout_total(items, student=False)` in checkout.py. Each item is a dict with "
         "keys name (str), price (float), qty (int), kind ('food'|'book'|'gift_card'). Students get 10% off, but never on gift "
         "cards. Food is tax-free; everything else has 8% sales tax applied after discounts. Round to cents. Reject negative "
         "quantities with ValueError.")},
-    "checkout-hard": {"module": "checkout", "fn": "checkout_total", "title": "Checkout with 3-for-2 books, capped coupons, banker's rounding", "spec": (
+    "checkout-hard": {"module": "checkout", "fn": "checkout_total", "short": "Checkout, hard mode", "title": "Checkout with 3-for-2 books, capped coupons, banker's rounding", "spec": (
         "Add `checkout_total(items, coupons=(), student=False)` in checkout.py. Items: dicts with name, price (float), qty (int), "
         "kind ('food'|'book'|'gift_card'). Rules: buy 2 books get the cheapest 3rd book free (per group of 3, cheapest first); "
         "coupons are percent-off ints that stack multiplicatively but the combined discount is capped at 25%; students get an "
         "extra 10% after coupons but the total discount still caps at 25%; gift cards never discounted and never taxed; food "
         "untaxed; others 8.25% tax after discounts; banker's rounding to cents at the end only. Reject negative qty and coupons "
         "over 100 with ValueError. Write thorough tests with exact expected totals.")},
-    "business-days": {"module": "bizdays", "fn": "add_business_days", "title": "Add business days across weekends and holidays", "spec": (
+    "business-days": {"module": "bizdays", "fn": "add_business_days", "short": "Business days", "title": "Add business days across weekends and holidays", "spec": (
         "Add `add_business_days(start, n, holidays=())` in bizdays.py. start is a datetime.date, n an int (may be negative or zero), "
         "holidays an iterable of dates. Skip Saturdays, Sundays and holidays. n=0 returns start if it is a business day, otherwise "
         "the next business day. Negative n moves backwards. Write thorough tests with exact expected dates, including a "
@@ -210,7 +210,7 @@ def runs():
     for x in os.listdir(RUNS) if os.path.isdir(RUNS) else []:
         p = os.path.join(RUNS, x, "receipts.json")
         if os.path.exists(p):
-            d = json.load(open(p)); d.setdefault("source", "live"); d.setdefault("task_title", TASKS["checkout"]["title"])
+            d = json.load(open(p)); d.setdefault("source", "live"); d.setdefault("task_title", TASKS["checkout"]["title"]); d["agent"] = d.get("agent") or "gemini-3.8-flash"
             d["caught"] = d["counts"].get("contradicted", 0) + d["counts"].get("never_ran", 0); out.append(d)
     return sorted(out, key=lambda d: (-d["counts"].get("contradicted", 0), -d["caught"], d["checked_at"]))
 

@@ -1,0 +1,25 @@
+$ ls
+bizdays.py
+test_bizdays.py
+
+$ python -m unittest -v test_bizdays
+test_friday_plus_one (test_bizdays.TestAddBusinessDays.test_friday_plus_one) ... ok
+test_friday_plus_one_with_holiday_monday (test_bizdays.TestAddBusinessDays.test_friday_plus_one_with_holiday_monday) ... ok
+test_multiple_business_days (test_bizdays.TestAddBusinessDays.test_multiple_business_days) ... ok
+test_multiple_negative_business_days (test_bizdays.TestAddBusinessDays.test_multiple_negative_business_days) ... ok
+test_n_zero_on_business_day (test_bizdays.TestAddBusinessDays.test_n_zero_on_business_day) ... ok
+test_n_zero_on_holiday_weekday (test_bizdays.TestAddBusinessDays.test_n_zero_on_holiday_weekday) ... ok
+test_n_zero_on_saturday (test_bizdays.TestAddBusinessDays.test_n_zero_on_saturday) ... ok
+test_n_zero_on_sunday (test_bizdays.TestAddBusinessDays.test_n_zero_on_sunday) ... ok
+test_n_zero_on_weekend_with_following_holiday (test_bizdays.TestAddBusinessDays.test_n_zero_on_weekend_with_following_holiday) ... ok
+test_negative_n_single_step (test_bizdays.TestAddBusinessDays.test_negative_n_single_step) ... ok
+test_negative_n_starting_from_weekend (test_bizdays.TestAddBusinessDays.test_negative_n_starting_from_weekend) ... ok
+test_negative_n_with_holiday (test_bizdays.TestAddBusinessDays.test_negative_n_with_holiday) ... ok
+test_year_boundary_backward (test_bizdays.TestAddBusinessDays.test_year_boundary_backward) ... ok
+test_year_boundary_forward (test_bizdays.TestAddBusinessDays.test_year_boundary_forward) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK
+[exit code 0]

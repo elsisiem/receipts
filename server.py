@@ -26,14 +26,16 @@ class H(BaseHTTPRequestHandler):
         if self.path.startswith("/api/runs"):
             return self._send(200, receipts.runs())
         if self.path.startswith("/api/tasks"):
-            return self._send(200, {k: {"title": v["title"], "spec": v["spec"]} for k, v in receipts.TASKS.items()})
-        if self.path in ("/", "/index.html"):
+            return self._send(200, {k: {"title": v["title"], "short": v.get("short", v["title"]), "spec": v["spec"]} for k, v in receipts.TASKS.items()})
+        if self.path.split("?")[0].rstrip("/") in ("", "/index.html", "/demo"):
             return self._send(200, open(os.path.join(ROOT, "index.html"), "rb").read(), "text/html; charset=utf-8")
         if self.path in ("/logo.svg", "/docs/logo.svg"):
             return self._send(200, open(os.path.join(ROOT, "docs", "logo.svg"), "rb").read(), "image/svg+xml")
         self._send(404, {"error": "not found"})
 
     def do_POST(self):
+        if self.path == "/api/check":
+            return self._check()
         if self.path != "/api/run":
             return self._send(404, {"error": "not found"})
         n = int(self.headers.get("Content-Length") or 0)
@@ -64,6 +66,34 @@ class H(BaseHTTPRequestHandler):
                 self.wfile.write(f"data: {json.dumps({'stage': 'error', 'error': f'{type(e).__name__}: {e}'[:300]})}\n\n".encode())
         except (BrokenPipeError, ConnectionResetError):
             pass
+        finally:
+            BUSY.release()
+
+    def _check(self):
+        """Plain JSON (not streamed): {"message": ..., "log": ...} -> the full receipts. Used by the MCP server."""
+        n = int(self.headers.get("Content-Length") or 0)
+        try:
+            body = json.loads(self.rfile.read(min(n, 400_000)) or b"{}")
+        except ValueError:
+            return self._send(400, {"error": "bad json"})
+        if not (body.get("message", "").strip() and body.get("log", "").strip()):
+            return self._send(400, {"error": "send both the agent's final message and the log"})
+        ip = self.headers.get("Fly-Client-IP") or self.client_address[0]
+        if time.time() - LAST_BY_IP.get(ip, 0) < 5:
+            return self._send(429, {"error": "one check every 5 s, please wait"})
+        if not BUSY.acquire(blocking=False):
+            return self._send(429, {"error": "busy, try again in a minute"})
+        LAST_BY_IP[ip] = time.time()
+        try:
+            run = None
+            for ev in receipts.stream("paste", message=body["message"], log=body["log"]):
+                if ev["stage"] == "done":
+                    run = ev["run"]
+            keep = ("id", "counts", "claims", "latency_ms", "models")
+            return self._send(200, {k: run[k] for k in keep})
+        except Exception as e:
+            traceback.print_exc()
+            return self._send(502, {"error": f"{type(e).__name__}: {e}"[:300]})
         finally:
             BUSY.release()
 

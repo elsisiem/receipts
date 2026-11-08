@@ -1,0 +1,22 @@
+$ ls
+bizdays.py
+test_bizdays.py
+
+$ python -m unittest -v test_bizdays
+test_friday_plus_one (test_bizdays.TestAddBusinessDays.test_friday_plus_one) ... ok
+test_holiday_monday (test_bizdays.TestAddBusinessDays.test_holiday_monday) ... ok
+test_multi_day_with_consecutive_holidays (test_bizdays.TestAddBusinessDays.test_multi_day_with_consecutive_holidays) ... ok
+test_negative_n_across_weekend (test_bizdays.TestAddBusinessDays.test_negative_n_across_weekend) ... ok
+test_negative_n_starting_from_weekend (test_bizdays.TestAddBusinessDays.test_negative_n_starting_from_weekend) ... ok
+test_year_boundary_backward (test_bizdays.TestAddBusinessDays.test_year_boundary_backward) ... ok
+test_year_boundary_forward (test_bizdays.TestAddBusinessDays.test_year_boundary_forward) ... ok
+test_zero_on_business_day (test_bizdays.TestAddBusinessDays.test_zero_on_business_day) ... ok
+test_zero_on_holiday_monday (test_bizdays.TestAddBusinessDays.test_zero_on_holiday_monday) ... ok
+test_zero_on_saturday (test_bizdays.TestAddBusinessDays.test_zero_on_saturday) ... ok
+test_zero_on_sunday (test_bizdays.TestAddBusinessDays.test_zero_on_sunday) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.001s
+
+OK
+[exit code 0]

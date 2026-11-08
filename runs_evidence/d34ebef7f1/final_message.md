@@ -1,0 +1,3 @@
+Implemented `add_business_days(start, n, holidays=())` in `bizdays.py` using standard library `datetime.date` and `datetime.timedelta`. The implementation properly excludes Saturdays, Sundays, and dates provided in `holidays`. When `n == 0`, it returns `start` if it is already a business day or advances to the next business day. Positive `n` advances business days forward, while negative `n` moves backward.
+
+Comprehensive unit tests were created in `test_bizdays.py` covering Friday + 1, holiday Mondays, weekend starts, year boundaries crossing from 2023 to 2024 (and backwards), negative steps, and zero-day adjustments. All unit tests pass.
