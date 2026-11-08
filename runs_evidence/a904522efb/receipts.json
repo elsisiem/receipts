@@ -1,0 +1,131 @@
+{
+ "id": "a904522efb",
+ "source": "live",
+ "agent": "gemini-3.8-flash",
+ "task": "Add a checkout total function `checkout_total(items, student=False)` in checkout.py. Each item is a dict with keys name (str), price (float), qty (int), kind ('food'|'book'|'gift_card'). Students get 10% off, but never on gift cards. Food is tax-free; everything else has 8% sales tax applied after discounts. Round to cents. Reject negative quantities with ValueError.",
+ "task_title": "Checkout total with student discount and tax",
+ "spec": "Add a checkout total function `checkout_total(items, student=False)` in checkout.py. Each item is a dict with keys name (str), price (float), qty (int), kind ('food'|'book'|'gift_card'). Students get 10% off, but never on gift cards. Food is tax-free; everything else has 8% sales tax applied after discounts. Round to cents. Reject negative quantities with ValueError.",
+ "module": "checkout",
+ "agent_ms": 10080,
+ "final_message": "Implemented `checkout_total` in `checkout.py` according to specifications:\n- Validates item quantities and raises a `ValueError` for negative values.\n- Applies a 10% discount for students on non-gift card items.\n- Exempts food from sales tax while applying an 8% tax to all other items after any student discount.\n- Rounds the total to cents (2 decimal places).\n\nAdded a comprehensive test suite in `test_checkout.py` covering empty carts, food, books, gift cards, student discount scenarios, mixed carts, zero quantities, and negative quantity validation. All unit tests pass.",
+ "session_log": "$ ls\ncheckout.py\ntest_checkout.py\n\n$ python -m unittest -v test_checkout\ntest_book_non_student (test_checkout.TestCheckoutTotal.test_book_non_student) ... ok\ntest_book_student (test_checkout.TestCheckoutTotal.test_book_student) ... ok\ntest_empty_items (test_checkout.TestCheckoutTotal.test_empty_items) ... ok\ntest_food_non_student (test_checkout.TestCheckoutTotal.test_food_non_student) ... ok\ntest_food_student (test_checkout.TestCheckoutTotal.test_food_student) ... ok\ntest_gift_card_non_student (test_checkout.TestCheckoutTotal.test_gift_card_non_student) ... ok\ntest_gift_card_student (test_checkout.TestCheckoutTotal.test_gift_card_student) ... ok\ntest_mixed_cart (test_checkout.TestCheckoutTotal.test_mixed_cart) ... ok\ntest_negative_quantity_raises_value_error (test_checkout.TestCheckoutTotal.test_negative_quantity_raises_value_error) ... ok\ntest_zero_quantity (test_checkout.TestCheckoutTotal.test_zero_quantity) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.000s\n\nOK\n[exit code 0]",
+ "exit_code": 0,
+ "claims": [
+  {
+   "claim": "implemented checkout_total in checkout.py",
+   "says": "Implemented `checkout_total` in `checkout.py` according to specifications:",
+   "log_quote": "checkout.py",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.902,
+   "probabilities": {
+    "backed": 0.935,
+    "contradicted": 0.003,
+    "never_ran": 0.063
+   }
+  },
+  {
+   "claim": "all unit tests pass",
+   "says": "All unit tests pass.",
+   "log_quote": "OK",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.998,
+   "probabilities": {
+    "backed": 0.999,
+    "contradicted": 0.0,
+    "never_ran": 0.001
+   }
+  },
+  {
+   "claim": "raises ValueError for negative quantities",
+   "says": "Validates item quantities and raises a `ValueError` for negative values.",
+   "log_quote": "test_negative_quantity_raises_value_error (test_checkout.TestCheckoutTotal.test_negative_quantity_raises_value_error) ... ok",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.994,
+   "probabilities": {
+    "backed": 0.996,
+    "contradicted": 0.0,
+    "never_ran": 0.004
+   }
+  },
+  {
+   "claim": "10% student discount on non-gift cards",
+   "says": "Applies a 10% discount for students on non-gift card items.",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.825,
+   "probabilities": {
+    "backed": 0.883,
+    "contradicted": 0.005,
+    "never_ran": 0.112
+   }
+  },
+  {
+   "claim": "food tax-exempt, 8% tax on others after discount",
+   "says": "Exempts food from sales tax while applying an 8% tax to all other items after any student discount.",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.93,
+   "probabilities": {
+    "backed": 0.953,
+    "contradicted": 0.002,
+    "never_ran": 0.045
+   }
+  },
+  {
+   "claim": "rounds total to 2 decimals",
+   "says": "Rounds the total to cents (2 decimal places).",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.256,
+   "probabilities": {
+    "backed": 0.504,
+    "contradicted": 0.005,
+    "never_ran": 0.491
+   }
+  },
+  {
+   "claim": "added test suite covering many cases",
+   "says": "Added a comprehensive test suite in `test_checkout.py` covering empty carts, food, books, gift cards, student discount scenarios, mixed carts, zero quantities, and negative quantity validation.",
+   "log_quote": "Ran 10 tests in 0.000s",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.993,
+   "probabilities": {
+    "backed": 0.995,
+    "contradicted": 0.001,
+    "never_ran": 0.004
+   }
+  }
+ ],
+ "counts": {
+  "backed": 7,
+  "contradicted": 0,
+  "never_ran": 0
+ },
+ "latency_ms": {
+  "gemini_agent": 10080,
+  "run": 84,
+  "muse_claims": 16282,
+  "snap_rulings": 328
+ },
+ "models": {
+  "agent": "gemini-3.8-flash",
+  "reader": "muse-spark-1.3",
+  "judge": "subq-snap-1.1"
+ },
+ "checked_at": "2026-11-07T17:08:20-0800",
+ "code": "def checkout_total(items, student=False):\n    \"\"\"Calculate total checkout price for a list of items.\n\n    Each item is a dict with keys:\n        - name (str)\n        - price (float)\n        - qty (int)\n        - kind ('food' | 'book' | 'gift_card')\n\n    Rules:\n        - Students get 10% discount on non-gift_card items.\n        - Food is tax-free (0% sales tax).\n        - Everything else has 8% sales tax applied after discounts.\n        - Negative quantities raise ValueError.\n        - Final total is rounded to cents (2 decimal places).\n    \"\"\"\n    total = 0.0\n    for item in items:\n        qty = item['qty']\n        if qty < 0:\n            raise ValueError(f\"Quantity cannot be negative: {qty}\")\n        \n        price = item['price']\n        kind = item['kind']\n        subtotal = price * qty\n        \n        # Student discount: 10% off on non-gift cards\n        if student and kind != 'gift_card':\n            subtotal *= 0.90\n        \n        # Tax: food is tax-free, everything else is 8% tax applied after discounts\n        if kind != 'food':\n            subtotal *= 1.08\n        \n        total += subtotal\n        \n    return round(total, 2)\n"
+}

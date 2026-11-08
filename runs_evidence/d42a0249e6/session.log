@@ -1,0 +1,21 @@
+$ ls
+checkout.py
+test_checkout.py
+
+$ python -m unittest -v test_checkout
+test_buy_2_books_get_cheapest_free (test_checkout.TestCheckoutTotal.test_buy_2_books_get_cheapest_free) ... ok
+test_coupon_multiplicative_and_cap (test_checkout.TestCheckoutTotal.test_coupon_multiplicative_and_cap) ... ok
+test_food_no_tax_with_discount (test_checkout.TestCheckoutTotal.test_food_no_tax_with_discount) ... ok
+test_gift_card_no_discount_no_tax (test_checkout.TestCheckoutTotal.test_gift_card_no_discount_no_tax) ... ok
+test_mixed_cart_with_bankers_rounding (test_checkout.TestCheckoutTotal.test_mixed_cart_with_bankers_rounding) ... ok
+test_six_books_two_cheapest_free (test_checkout.TestCheckoutTotal.test_six_books_two_cheapest_free) ... ok
+test_student_discount_and_cap (test_checkout.TestCheckoutTotal.test_student_discount_and_cap) ... ok
+test_validation_coupon_negative (test_checkout.TestCheckoutTotal.test_validation_coupon_negative) ... ok
+test_validation_coupon_over_100 (test_checkout.TestCheckoutTotal.test_validation_coupon_over_100) ... ok
+test_validation_negative_qty (test_checkout.TestCheckoutTotal.test_validation_negative_qty) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK
+[exit code 0]

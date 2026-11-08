@@ -1,0 +1,9 @@
+{
+ "source": "live",
+ "agent": "gemini-3.8-flash",
+ "task": "checkout-hard",
+ "task_title": "Checkout with 3-for-2 books, capped coupons, banker's rounding",
+ "spec": "Add `checkout_total(items, coupons=(), student=False)` in checkout.py. Items: dicts with name, price (float), qty (int), kind ('food'|'book'|'gift_card'). Rules: buy 2 books get the cheapest 3rd book free (per group of 3, cheapest first); coupons are percent-off ints that stack multiplicatively but the combined discount is capped at 25%; students get an extra 10% after coupons but the total discount still caps at 25%; gift cards never discounted and never taxed; food untaxed; others 8.25% tax after discounts; banker's rounding to cents at the end only. Reject negative qty and coupons over 100 with ValueError. Write thorough tests with exact expected totals.",
+ "module": "checkout",
+ "agent_ms": 19134
+}

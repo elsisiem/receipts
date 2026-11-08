@@ -1,0 +1,8 @@
+{
+ "source": "real public PR",
+ "agent": "app/copilot-swe-agent (GitHub Copilot coding agent)",
+ "task_title": "github/gh-aw#75774: Show detector-defined threat categories in generated warnings",
+ "spec": "https://github.com/github/gh-aw/pull/75774",
+ "url": "https://github.com/github/gh-aw/pull/75774",
+ "module": null
+}

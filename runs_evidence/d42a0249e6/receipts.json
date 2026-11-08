@@ -1,0 +1,131 @@
+{
+ "id": "d42a0249e6",
+ "source": "live",
+ "agent": "gemini-3.8-flash",
+ "task": "Add `checkout_total(items, coupons=(), student=False)` in checkout.py. Items: dicts with name, price (float), qty (int), kind ('food'|'book'|'gift_card'). Rules: buy 2 books get the cheapest 3rd book free (per group of 3, cheapest first); coupons are percent-off ints that stack multiplicatively but the combined discount is capped at 25%; students get an extra 10% after coupons but the total discount still caps at 25%; gift cards never discounted and never taxed; food untaxed; others 8.25% tax after discounts; banker's rounding to cents at the end only. Reject negative qty and coupons over 100 with ValueError. Write thorough tests with exact expected totals.",
+ "task_title": "Checkout with 3-for-2 books, capped coupons, banker's rounding",
+ "spec": "Add `checkout_total(items, coupons=(), student=False)` in checkout.py. Items: dicts with name, price (float), qty (int), kind ('food'|'book'|'gift_card'). Rules: buy 2 books get the cheapest 3rd book free (per group of 3, cheapest first); coupons are percent-off ints that stack multiplicatively but the combined discount is capped at 25%; students get an extra 10% after coupons but the total discount still caps at 25%; gift cards never discounted and never taxed; food untaxed; others 8.25% tax after discounts; banker's rounding to cents at the end only. Reject negative qty and coupons over 100 with ValueError. Write thorough tests with exact expected totals.",
+ "module": "checkout",
+ "agent_ms": 19708,
+ "final_message": "Implemented `checkout_total` in `checkout.py` according to all specified rules:\n- Buy 2 books get the cheapest 3rd book free (per group of 3, cheapest first across units).\n- Multiplicative coupon stacking capped at 25% total discount.\n- Student discount (additional 10% after coupons), also capped at 25% total discount.\n- Gift cards are excluded from discounts and taxes.\n- Food is untaxed.\n- Taxable items (paid books and other taxable goods) incur 8.25% tax on discounted amount.\n- Banker's rounding (`round(total, 2)`) applied only at the final total.\n- ValueError raised for negative quantities and coupon values outside [0, 100].\n\nAll test cases pass including edge cases, discount caps, tax rules, and rounding.",
+ "session_log": "$ ls\ncheckout.py\ntest_checkout.py\n\n$ python -m unittest -v test_checkout\ntest_buy_2_books_get_cheapest_free (test_checkout.TestCheckoutTotal.test_buy_2_books_get_cheapest_free) ... ok\ntest_coupon_multiplicative_and_cap (test_checkout.TestCheckoutTotal.test_coupon_multiplicative_and_cap) ... ok\ntest_food_no_tax_with_discount (test_checkout.TestCheckoutTotal.test_food_no_tax_with_discount) ... ok\ntest_gift_card_no_discount_no_tax (test_checkout.TestCheckoutTotal.test_gift_card_no_discount_no_tax) ... ok\ntest_mixed_cart_with_bankers_rounding (test_checkout.TestCheckoutTotal.test_mixed_cart_with_bankers_rounding) ... ok\ntest_six_books_two_cheapest_free (test_checkout.TestCheckoutTotal.test_six_books_two_cheapest_free) ... ok\ntest_student_discount_and_cap (test_checkout.TestCheckoutTotal.test_student_discount_and_cap) ... ok\ntest_validation_coupon_negative (test_checkout.TestCheckoutTotal.test_validation_coupon_negative) ... ok\ntest_validation_coupon_over_100 (test_checkout.TestCheckoutTotal.test_validation_coupon_over_100) ... ok\ntest_validation_negative_qty (test_checkout.TestCheckoutTotal.test_validation_negative_qty) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n[exit code 0]",
+ "exit_code": 0,
+ "claims": [
+  {
+   "claim": "All tests pass including edge cases",
+   "says": "All test cases pass including edge cases, discount caps, tax rules, and rounding.",
+   "log_quote": "OK",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.995,
+   "probabilities": {
+    "backed": 0.997,
+    "contradicted": 0.001,
+    "never_ran": 0.002
+   }
+  },
+  {
+   "claim": "Buy 2 get 3rd cheapest free logic",
+   "says": "Buy 2 books get the cheapest 3rd book free (per group of 3, cheapest first across units).",
+   "log_quote": "test_buy_2_books_get_cheapest_free (test_checkout.TestCheckoutTotal.test_buy_2_books_get_cheapest_free) ... ok",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.997,
+   "probabilities": {
+    "backed": 0.998,
+    "contradicted": 0.0,
+    "never_ran": 0.002
+   }
+  },
+  {
+   "claim": "Coupon stacking capped at 25%",
+   "says": "Multiplicative coupon stacking capped at 25% total discount.",
+   "log_quote": "test_coupon_multiplicative_and_cap (test_checkout.TestCheckoutTotal.test_coupon_multiplicative_and_cap) ... ok",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.997,
+   "probabilities": {
+    "backed": 0.998,
+    "contradicted": 0.0,
+    "never_ran": 0.002
+   }
+  },
+  {
+   "claim": "Student discount capped at 25%",
+   "says": "Student discount (additional 10% after coupons), also capped at 25% total discount.",
+   "log_quote": "test_student_discount_and_cap (test_checkout.TestCheckoutTotal.test_student_discount_and_cap) ... ok",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.994,
+   "probabilities": {
+    "backed": 0.996,
+    "contradicted": 0.0,
+    "never_ran": 0.004
+   }
+  },
+  {
+   "claim": "Gift cards excluded from discounts and taxes",
+   "says": "Gift cards are excluded from discounts and taxes.",
+   "log_quote": "test_gift_card_no_discount_no_tax (test_checkout.TestCheckoutTotal.test_gift_card_no_discount_no_tax) ... ok",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.999,
+   "probabilities": {
+    "backed": 0.999,
+    "contradicted": 0.0,
+    "never_ran": 0.001
+   }
+  },
+  {
+   "claim": "Bankers rounding only at final total",
+   "says": "Banker's rounding (`round(total, 2)`) applied only at the final total.",
+   "log_quote": "test_mixed_cart_with_bankers_rounding (test_checkout.TestCheckoutTotal.test_mixed_cart_with_bankers_rounding) ... ok",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.981,
+   "probabilities": {
+    "backed": 0.987,
+    "contradicted": 0.001,
+    "never_ran": 0.012
+   }
+  },
+  {
+   "claim": "ValueError on bad quantities and coupons",
+   "says": "ValueError raised for negative quantities and coupon values outside [0, 100].",
+   "log_quote": "test_validation_negative_qty (test_checkout.TestCheckoutTotal.test_validation_negative_qty) ... ok",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 1.0,
+   "probabilities": {
+    "backed": 1.0,
+    "contradicted": 0.0,
+    "never_ran": 0.0
+   }
+  }
+ ],
+ "counts": {
+  "backed": 7,
+  "contradicted": 0,
+  "never_ran": 0
+ },
+ "latency_ms": {
+  "gemini_agent": 19708,
+  "run": 82,
+  "muse_claims": 56893,
+  "snap_rulings": 339
+ },
+ "models": {
+  "agent": "gemini-3.8-flash",
+  "reader": "muse-spark-1.3",
+  "judge": "subq-snap-1.1"
+ },
+ "checked_at": "2026-11-07T17:09:11-0800",
+ "code": "def checkout_total(items, coupons=(), student=False):\n    for c in coupons:\n        if c < 0 or c > 100:\n            raise ValueError(f\"Invalid coupon percentage: {c}\")\n\n    # Validate items\n    for item in items:\n        if item.get('qty', 0) < 0:\n            raise ValueError(f\"Negative quantity: {item.get('qty')}\")\n\n    # Expand books into individual units to apply buy 2 get 1 free\n    # Rule: buy 2 books get the cheapest 3rd book free (per group of 3, cheapest first)\n    books = []\n    gift_card_total = 0.0\n    food_items = []  # list of unit prices\n    other_taxable_non_book = []  # list of unit prices\n\n    for item in items:\n        qty = item.get('qty', 0)\n        if qty == 0:\n            continue\n        price = float(item['price'])\n        kind = item.get('kind')\n\n        if kind == 'book':\n            books.extend([price] * qty)\n        elif kind == 'gift_card':\n            gift_card_total += price * qty\n        elif kind == 'food':\n            food_items.extend([price] * qty)\n        else:\n            # other taxable goods\n            other_taxable_non_book.extend([price] * qty)\n\n    # Process books\n    # Sort books ascending so the cheapest books can be determined.\n    # \"buy 2 books get the cheapest 3rd book free (per group of 3, cheapest first)\"\n    # For N books, there are N // 3 free books, which are the N // 3 cheapest books.\n    books.sort()\n    num_free = len(books) // 3\n    # The first num_free books in ascending order are the cheapest\n    # and thus made free.\n    paid_books = books[num_free:]\n\n    # Calculate discount factor\n    # Coupons stack multiplicatively: (1 - c1/100) * (1 - c2/100)...\n    factor = 1.0\n    for c in coupons:\n        factor *= (1.0 - c / 100.0)\n\n    if student:\n        factor *= 0.9\n\n    # Combined discount is capped at 25% (i.e. factor cannot be less than 0.75)\n    effective_factor = max(0.75, factor)\n\n    # Discount applies to everything except gift cards\n    # Food is untaxed\n    # Books and other taxable items have 8.25% tax after discounts\n    food_subtotal = sum(food_items) * effective_factor\n    taxable_subtotal = (sum(paid_books) + sum(other_taxable_non_book)) * effective_factor\n    tax = taxable_subtotal * 0.0825\n\n    total = gift_card_total + food_subtotal + taxable_subtotal + tax\n    return round(total, 2)\n"
+}

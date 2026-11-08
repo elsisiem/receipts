@@ -1,0 +1,8 @@
+{
+ "source": "real public PR",
+ "agent": "app/copilot-swe-agent (GitHub Copilot coding agent)",
+ "task_title": "CherryHQ/cherry-studio#23837: Show missing shared runtime status on local model cards",
+ "spec": "https://github.com/CherryHQ/cherry-studio/pull/23837",
+ "url": "https://github.com/CherryHQ/cherry-studio/pull/23837",
+ "module": null
+}

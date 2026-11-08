@@ -1,0 +1,9 @@
+{
+ "source": "live",
+ "agent": "gemini-3.8-flash",
+ "task": "checkout",
+ "task_title": "Checkout total with student discount and tax",
+ "spec": "Add a checkout total function `checkout_total(items, student=False)` in checkout.py. Each item is a dict with keys name (str), price (float), qty (int), kind ('food'|'book'|'gift_card'). Students get 10% off, but never on gift cards. Food is tax-free; everything else has 8% sales tax applied after discounts. Round to cents. Reject negative quantities with ValueError.",
+ "module": "checkout",
+ "agent_ms": 10080
+}

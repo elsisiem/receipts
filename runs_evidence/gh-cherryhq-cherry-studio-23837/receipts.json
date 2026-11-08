@@ -1,0 +1,128 @@
+{
+ "id": "gh-cherryhq-cherry-studio-23837",
+ "source": "real public PR",
+ "agent": "app/copilot-swe-agent (GitHub Copilot coding agent)",
+ "task_title": "CherryHQ/cherry-studio#23837: Show missing shared runtime status on local model cards",
+ "spec": "https://github.com/CherryHQ/cherry-studio/pull/23837",
+ "url": "https://github.com/CherryHQ/cherry-studio/pull/23837",
+ "module": null,
+ "task": "https://github.com/CherryHQ/cherry-studio/pull/23837",
+ "final_message": "### What this PR does\n\nBefore this PR: Complete model files with a missing shared runtime showed only the generic \u201cnot downloaded\u201d status.\n\nAfter this PR:\n- The status remains `not_downloaded`, with an optional `missing_shared_runtime` hint:\n  ```ts\n  { status: 'not_downloaded', hintCode: 'missing_shared_runtime' }\n  ```\n- The model card explains that the shared runtime is missing and keeps the download action available.\n- The message is translated in all renderer locales.\n\n### Why we need it and why it was done in this way\n\nA generic status hid why existing model files could not be used. The optional hint makes the cause clear without adding a status value or changing existing download behavior.\n\nThe following tradeoffs were made:\n\n- Keep `not_downloaded` and its existing consumer behavior; carry the explanation separately as `hintCode`.\n\nThe following alternatives were considered:\n\n- A new status value, which would require updating consumers that branch on `not_downloaded`.\n\nLinks to places where the discussion took place: N/A\n\n### Agent Note / Spec\n\nAgent Note: N/A \u2014 preserves existing status and action semantics; adds diagnostic metadata.\n\nSpec PR: N/A \u2014 local bug fix.\n\nAcceptance criteria: N/A \u2014 no Spec ACs.\n\n### Verification\n\n- Regression \u2014 `BundleInstaller.test.ts`, `LocalModelService.test.ts`, and `localModel.test.ts`: 42 tests passed.\n- Regression \u2014 `LocalModelsSection.test.tsx`: 13 tests passed.\n- `pnpm i18n:check` and `pnpm docs:check` passed.\n\n### Breaking changes\n\nNone.\n\n### Special notes for your reviewer\n\nThe hint is included when bundle files are complete but a required shared artifact is missing.\n\n### Checklist\n\nThis checklist is not enforcing, but it's a reminder of items that could be relevant to every PR.\nApprovers are expected to review this list.\n\n- [ ] Branch: This PR targets `main`\n- [ ] PR: The PR description is expressive enough and will help future contributors\n- [ ] Code: [Write code that humans can understand](https://en.wikiquote.org/wiki/Martin_Fowler#code-for-humans) and [Keep it simple](https://en.wikipedia.org/wiki/KISS_principle)\n- [ ] Refactor: You have [left the code cleaner than you found it (Boy Scout Rule)](https://learning.oreilly.com/library/view/97-things-every/9780596809515/ch08.html)\n- [ ] Upgrade: Impact of this change on upgrade flows was considered and addressed if required\n- [ ] Documentation: A [user-guide update](https://docs.cherry-ai.com) was considered and is present (link) or not required. Check this only when the PR introduces or changes a user-facing feature or behavior.\n- [ ] Self-review: I have reviewed my own code (e.g., via [`/gh-pr-review`](/.claude/skills/gh-pr-review/SKILL.md), `gh pr diff`, or GitHub UI) before requesting review from others\n\n### Release note\n\n```release-note\nLocal model cards now explain when model files are present but the shared runtime is missing.\n```\n\n<!-- START COPILOT CODING AGENT SUFFIX -->\n\n- Fixes #23795",
+ "session_log": "$ gh pr checks https://github.com/CherryHQ/cherry-studio/pull/23837\ncancelled  Classify release hotfix\nskipped    changes\nskipped    rerun-ci\nskipped    rerun-ci\nsuccess    Classify release hotfix\nsuccess    changes\nskipped    Prepare hotfix backport pull request\nskipped    Prepare hotfix backport pull request\nskipped    basic-checks\nsuccess    basic-checks\nskipped    Track backport pull request\nskipped    Track backport pull request\nskipped    main-test (${{ matrix.shard }}/3)\nsuccess    main-test (1/3)\nsuccess    main-test (2/3)\nsuccess    main-test (3/3)\nfailure    renderer-test (1/5)\nskipped    renderer-test (${{ matrix.shard }}/5)\nsuccess    renderer-test (2/5)\nsuccess    renderer-test (3/5)\nsuccess    renderer-test (4/5)\nsuccess    renderer-test (5/5)\nfailure    package-test\nskipped    package-test\nskipped    platform-test (${{ matrix.os }})\nsuccess    platform-test (macos-latest)\nsuccess    platform-test (windows-2022)\nfailure    render-test\nskipped    render-test\nfailure    general-test\nskipped    general-test\nskipped    notify\nskipped    notify\nsuccess    cherry-review\n\n$ gh run view --job 128537322582 --log-failed   # renderer-test (1/5)\n^[[22m^[[39mRequest failed: GET /providers DataApiError: Invalid provider token=secret\n    at DataApiError.fromJSON ^[[90m(/home/runner/work/cherry-studio/cherry-studio/^[[39msrc/shared/data/api/errors.ts:466:12^[[90m)^[[39m\n  details: { fieldErrors: { name: ^[[36m[Array]^[[39m } },\n^[[22m^[[39mRequest failed: GET /providers DataApiError: Request timeout: /providers (3000ms)\n    at DataApiError.fromJSON ^[[90m(/home/runner/work/cherry-studio/cherry-studio/^[[39msrc/shared/data/api/errors.ts:466:12^[[90m)^[[39m\n ^[[32m\u2713^[[39m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/components/ErrorDetailModal/__tests__/isDiagnosticReportEligible.test.ts ^[[2m(^[[22m^[[2m22 tests^[[22m^[[2m)^[[22m^[[32m 87^[[2mms^[[22m^[[39m\n^[[22m^[[39mFailed to auto-rename note: Error: offline\n ^[[32m\u2713^[[39m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/components/ErrorDetailModal/__tests__/diagnosticReportDescription.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[32m 99^[[2mms^[[22m^[[39m\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\nTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\nTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\nTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mCode highlighting unavailable; displaying plain text Error: Highlight session closed\n^[[22m^[[39mCode highlighting unavailable; displaying plain text Error: Highlight session closed\n^[[90mstderr^[[2m | src/renderer/pages/settings/__tests__/ComputerUseSettings.test.tsx^[[2m > ^[[22m^[[2mComputer Use permission settings^[[2m > ^[[22m^[[2mshows a query failure and allows an explicit permission recheck to recover\n^[[22m^[[39mPermission query failed Error: runtime missing\n^[[90mstderr^[[2m | src/renderer/pages/settings/__tests__/ComputerUseSettings.test.tsx^[[2m > ^[[22m^[[2mComputer Use permission settings^[[2m > ^[[22m^[[2msurfaces a failed request without retrying the system interaction\n^[[22m^[[39mPermission request failed Error: cancelled\n^[[90mstderr^[[2m | src/renderer/hooks/__tests__/useKnowledgeBaseReorder.test.tsx^[[2m > ^[[22m^[[2mknowledge base cached ordering^[[2m > ^[[22m^[[2mshows refreshes during a pending move and reconciles completion (failure=true)\n^[[22m^[[39mmove failed for /knowledge-bases id=c, rolling back {\n  error: Error: move rejected\n^[[90mstderr^[[2m | src/renderer/components/chat/messages/hooks/__tests__/useMessagePlatformActions.test.tsx^[[2m > ^[[22m^[[2museMessagePlatformActions^[[2m > ^[[22m^[[2mretries rich clipboard writes without custom formats when custom formats fail\n^[[22m^[[39mFailed to write composer clipboard custom formats, falling back to text-only data Error: custom format unsupported\n^[[22m^[[39mFailed to read Mermaid file: /ws/flow.mmd Error: EACCES\n^[[90mstderr^[[2m | src/renderer/services/__tests__/MermaidRenderService.test.ts^[[2m > ^[[22m^[[2mMermaidRenderService^[[2m > ^[[22m^[[2mfails the current render when the worker crashes and recovers for the next one\n^[[22m^[[39mMermaid worker failed Error: boom\n^[[22m^[[39mstreamOpen IPC failed Error: ipc boom\nError: Not implemented: window.scrollTo\nError: Not implemented: window.scrollTo\n ^[[32m\u2713^[[39m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/components/layout/__tests__/RouteErrorFallback.test.tsx ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[32m 241^[[2mms^[[22m^[[39m\n^[[90mstderr^[[2m | src/renderer/hooks/__tests__/useToolApprovalBridge.test.ts^[[2m > ^[[22m^[[2museToolApprovalBridge^[[2m > ^[[22m^[[2mthrows when delivery to main fails\n^[[90mstderr^[[2m | src/renderer/hooks/__tests__/useNotesSettings.test.ts^[[2m > ^[[22m^[[2museNotesSettings^[[2m > ^[[22m^[[2mshows one error toast when settings persistence fails\n^[[22m^[[39mFailed to update notes settings Error: persist failed\n^[[90mstderr^[[2m | src/renderer/components/markdown/__tests__/MarkdownTable.test.tsx^[[2m > ^[[22m^[[2mMarkdown table host capabilities^[[2m > ^[[22m^[[2mreports a failed copy and permits retry\n  error: Error: Clipboard unavailable\n^[[90mstderr^[[2m | src/renderer/hooks/__tests__/useShowWorkspace.test.ts^[[2m > ^[[22m^[[2museShowWorkspace^[[2m > ^[[22m^[[2mshows an error toast when workspace visibility persistence fails\n^[[22m^[[39mFailed to update notes workspace visibility Error: persist failed\n^[[31m\u23af\u23af\u23af\u23af\u23af\u23af\u23af^[[39m^[[1m^[[41m Failed Tests 7 ^[[49m^[[22m^[[31m\u23af\u23af\u23af\u23af\u23af\u23af\u23af^[[39m\n^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mrelabels a tab when another window renames its conversation\n^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mdrops a delayed cross-window rename after the tab navigated away\n^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mdrops a pending rename whose writer unmounted before it landed\n^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mignores a non-Chat route that happens to carry the same query key\n^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mleaves the label alone when the committed name is blank\n^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mkeeps the newest name when overlapping Chat renames resolve out of order\n^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mkeeps the newest name when overlapping Work renames resolve out of order\n^[[31m^[[1mError^[[22m: [vitest] No \"usePersistCacheReader\" export is defined on the \"@renderer/data/hooks/useCache\" mock. Did you forget to return it from \"vi.mock\"?\n^[[2m Test Files ^[[22m ^[[1m^[[31m1 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m249 passed^[[39m^[[22m^[[90m (250)^[[39m\n^[[2m      Tests ^[[22m ^[[1m^[[31m7 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m3360 passed^[[39m^[[22m^[[90m (3367)^[[39m\n##[error]Error: [vitest] No \"usePersistCacheReader\" export is defined on the \"@renderer/data/hooks/useCache\" mock. Did you forget to return it from \"vi.mock\"?\n##[error]Error: [vitest] No \"usePersistCacheReader\" export is defined on the \"@renderer/data/hooks/useCache\" mock. Did you forget to return it from \"vi.mock\"?\n##[error]Error: [vitest] No \"usePersistCacheReader\" export is defined on the \"@renderer/data/hooks/useCache\" mock. Did you forget to return it from \"vi.mock\"?\n##[error]Error: [vitest] No \"usePersistCacheReader\" export is defined on the \"@renderer/data/hooks/useCache\" mock. Did you forget to return it from \"vi.mock\"?\n##[error]Error: [vitest] No \"usePersistCacheReader\" export is defined on the \"@renderer/data/hooks/useCache\" mock. Did you forget to return it from \"vi.mock\"?\n##[error]Error: [vitest] No \"usePersistCacheReader\" export is defined on the \"@renderer/data/hooks/useCache\" mock. Did you forget to return it from \"vi.mock\"?\n##[error]Error: [vitest] No \"usePersistCacheReader\" export is defined on the \"@renderer/data/hooks/useCache\" mock. Did you forget to return it from \"vi.mock\"?\n[ELIFECYCLE] Command failed with exit code 1.\n\n$ gh run view --job 128537322527 --log-failed   # package-test\n   ^[[33m^[[2m\u2713^[[22m^[[39m fails the platform gate when the real Playwright subprocess cannot acquire its owned application^[[33m 2411^[[2mms^[[22m^[[39m\n ^[[32m\u2713^[[39m ^[[30m^[[42m shared ^[[49m^[[39m src/shared/ai/__tests__/providerError.test.ts ^[[2m(^[[22m^[[2m116 tests^[[22m^[[2m)^[[22m^[[32m 59^[[2mms^[[22m^[[39m\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\nError: Could not parse CSS stylesheet\n ^[[31m\u276f^[[39m ^[[30m^[[45m ui ^[[49m^[[39m packages/ui/scripts/__tests__/validate-migration-contract.test.ts ^[[2m(^[[22m^[[2m29 tests^[[22m^[[2m | ^[[22m^[[31m1 failed^[[39m^[[2m)^[[22m^[[33m 490^[[2mms^[[22m^[[39m\n^[[31m     ^[[31m\u00d7^[[31m accepts the repository migration registry after compatibility bridge removal^[[39m^[[32m 100^[[2mms^[[22m^[[39m\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\nTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\nTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\nTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\nTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\nTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\nTypeError: textRange(...).getClientRects is not a function\n ^[[31m\u276f^[[39m ^[[30m^[[45m ui ^[[49m^[[39m packages/ui/scripts/__tests__/build-theme-css.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m | ^[[22m^[[31m1 failed^[[39m^[[2m)^[[22m^[[33m 481^[[2mms^[[22m^[[39m\n^[[31m     ^[[31m\u00d7^[[31m keeps the committed theme.css current^[[39m^[[33m 469^[[2mms^[[22m^[[39m\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\nError: Could not parse CSS stylesheet\n^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function\n^[[31m\u23af\u23af\u23af\u23af\u23af\u23af\u23af^[[39m^[[1m^[[41m Failed Tests 2 ^[[49m^[[22m^[[31m\u23af\u23af\u23af\u23af\u23af\u23af\u23af^[[39m\n^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m ui ^[[49m^[[39m packages/ui/scripts/__tests__/build-theme-css.test.ts^[[2m > ^[[22mbuildThemeContractCss^[[2m > ^[[22mkeeps the committed theme.css current\n^[[31m^[[1mAssertionError^[[22m: promise rejected \"Error: [theme-contract] renderer TypeScri\u2026\" instead of resolving^[[39m\n^[[31m^[[1mCaused by: Error^[[22m: [theme-contract] renderer TypeScript source src/renderer/pages/translate/components/__tests__/TranslateOutputPane.image.test.tsx cannot write shared theme variable --card; use a registered --cs-theme-* input or an owner-local --app-* variable^[[39m\n^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m ui ^[[49m^[[39m packages/ui/scripts/__tests__/validate-migration-contract.test.ts^[[2m > ^[[22mvalidateMigrationContractSources^[[2m > ^[[22maccepts the repository migration registry after compatibility bridge removal\n^[[31m^[[1mAssertionError^[[22m: expected [Function] to not throw an error but 'Error: [theme-contract] renderer Type\u2026' was thrown^[[39m\n\"Error: [theme-contract] renderer TypeScript source src/renderer/pages/translate/components/__tests__/TranslateOutputPane.image.test.tsx cannot write shared theme variable --card; use a registered --cs-theme-* input or an owner-local --app-* variable\"\n^[[2m Test Files ^[[22m ^[[1m^[[31m2 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m529 passed^[[39m^[[22m^[[90m (531)^[[39m\n^[[2m      Tests ^[[22m ^[[1m^[[31m2 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m7348 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m10 skipped^[[39m^[[90m (7360)^[[39m\n##[error]AssertionError: promise rejected \"Error: [theme-contract] renderer TypeScri\u2026\" instead of resolving\nCaused by: Caused by: Error: [theme-contract] renderer TypeScript source src/renderer/pages/translate/components/__tests__/TranslateOutputPane.image.test.tsx cannot write shared theme variable --card; use a registered --cs-theme-* input or an owner-local --app-* variable\n##[error]AssertionError: expected [Function] to not throw an error but 'Error: [theme-contract] renderer Type\u2026' was thrown\n\"Error: [theme-contract] renderer TypeScript source src/renderer/pages/translate/components/__tests__/TranslateOutputPane.image.test.tsx cannot write shared theme variable --card; use a registered --cs-theme-* input or an owner-local --app-* variable\"\n[ELIFECYCLE] Command failed with exit code 1.\n\n$ gh run view --job 128538847831 --log-failed   # render-test\n    \"result\": \"failure\",\n      throw new Error(`${group}: expected success, received ${results[group] ?? 'missing'}`)\nError: renderer: expected success, received failure\n\n$ gh run view --job 128539453014 --log-failed   # general-test\n    \"result\": \"failure\",\n      throw new Error(`${group}: expected success, received ${results[group] ?? 'missing'}`)\nError: packages: expected success, received failure",
+ "exit_code": null,
+ "claims": [
+  {
+   "claim": "status stays not_downloaded with missing_shared_runtime hint",
+   "says": "{ status: 'not_downloaded', hintCode: 'missing_shared_runtime' }",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "never_ran",
+   "confidence": 0.905,
+   "probabilities": {
+    "backed": 0.051,
+    "contradicted": 0.013,
+    "never_ran": 0.936
+   }
+  },
+  {
+   "claim": "model card explains missing runtime and keeps download action",
+   "says": "The model card explains that the shared runtime is missing and keeps the download action available.",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "never_ran",
+   "confidence": 0.94,
+   "probabilities": {
+    "backed": 0.033,
+    "contradicted": 0.007,
+    "never_ran": 0.96
+   }
+  },
+  {
+   "claim": "message translated in all renderer locales",
+   "says": "The message is translated in all renderer locales.",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "never_ran",
+   "confidence": 0.818,
+   "probabilities": {
+    "backed": 0.112,
+    "contradicted": 0.01,
+    "never_ran": 0.878
+   }
+  },
+  {
+   "claim": "hint included when bundle complete but shared artifact missing",
+   "says": "The hint is included when bundle files are complete but a required shared artifact is missing.",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "never_ran",
+   "confidence": 0.923,
+   "probabilities": {
+    "backed": 0.042,
+    "contradicted": 0.009,
+    "never_ran": 0.949
+   }
+  },
+  {
+   "claim": "BundleInstaller/LocalModelService/localModel 42 tests passed",
+   "says": "Regression \u2014 `BundleInstaller.test.ts`, `LocalModelService.test.ts`, and `localModel.test.ts`: 42 tests passed.",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "never_ran",
+   "confidence": 0.926,
+   "probabilities": {
+    "backed": 0.042,
+    "contradicted": 0.007,
+    "never_ran": 0.951
+   }
+  },
+  {
+   "claim": "LocalModelsSection 13 tests passed",
+   "says": "Regression \u2014 `LocalModelsSection.test.tsx`: 13 tests passed.",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "never_ran",
+   "confidence": 0.968,
+   "probabilities": {
+    "backed": 0.017,
+    "contradicted": 0.004,
+    "never_ran": 0.978
+   }
+  },
+  {
+   "claim": "i18n:check and docs:check passed",
+   "says": "`pnpm i18n:check` and `pnpm docs:check` passed.",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "never_ran",
+   "confidence": 0.964,
+   "probabilities": {
+    "backed": 0.019,
+    "contradicted": 0.005,
+    "never_ran": 0.976
+   }
+  }
+ ],
+ "counts": {
+  "backed": 0,
+  "contradicted": 0,
+  "never_ran": 7
+ },
+ "latency_ms": {
+  "muse_claims": 9645,
+  "snap_rulings": 514
+ },
+ "models": {
+  "agent": "app/copilot-swe-agent (GitHub Copilot coding agent)",
+  "reader": "muse-spark-1.3",
+  "judge": "subq-snap-1.1"
+ },
+ "checked_at": "2026-11-07T17:10:40-0800"
+}

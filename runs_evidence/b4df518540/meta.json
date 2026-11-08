@@ -1,0 +1,9 @@
+{
+ "source": "live",
+ "agent": "gemini-3.8-flash",
+ "task": "business-days",
+ "task_title": "Add business days across weekends and holidays",
+ "spec": "Add `add_business_days(start, n, holidays=())` in bizdays.py. start is a datetime.date, n an int (may be negative or zero), holidays an iterable of dates. Skip Saturdays, Sundays and holidays. n=0 returns start if it is a business day, otherwise the next business day. Negative n moves backwards. Write thorough tests with exact expected dates, including a Friday + 1, a holiday Monday, year boundaries and negative n.",
+ "module": "bizdays",
+ "agent_ms": 8157
+}

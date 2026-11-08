@@ -1,0 +1,169 @@
+$ gh pr checks https://github.com/CherryHQ/cherry-studio/pull/23837
+cancelled  Classify release hotfix
+skipped    changes
+skipped    rerun-ci
+skipped    rerun-ci
+success    Classify release hotfix
+success    changes
+skipped    Prepare hotfix backport pull request
+skipped    Prepare hotfix backport pull request
+skipped    basic-checks
+success    basic-checks
+skipped    Track backport pull request
+skipped    Track backport pull request
+skipped    main-test (${{ matrix.shard }}/3)
+success    main-test (1/3)
+success    main-test (2/3)
+success    main-test (3/3)
+failure    renderer-test (1/5)
+skipped    renderer-test (${{ matrix.shard }}/5)
+success    renderer-test (2/5)
+success    renderer-test (3/5)
+success    renderer-test (4/5)
+success    renderer-test (5/5)
+failure    package-test
+skipped    package-test
+skipped    platform-test (${{ matrix.os }})
+success    platform-test (macos-latest)
+success    platform-test (windows-2022)
+failure    render-test
+skipped    render-test
+failure    general-test
+skipped    general-test
+skipped    notify
+skipped    notify
+success    cherry-review
+
+$ gh run view --job 128537322582 --log-failed   # renderer-test (1/5)
+^[[22m^[[39mRequest failed: GET /providers DataApiError: Invalid provider token=secret
+    at DataApiError.fromJSON ^[[90m(/home/runner/work/cherry-studio/cherry-studio/^[[39msrc/shared/data/api/errors.ts:466:12^[[90m)^[[39m
+  details: { fieldErrors: { name: ^[[36m[Array]^[[39m } },
+^[[22m^[[39mRequest failed: GET /providers DataApiError: Request timeout: /providers (3000ms)
+    at DataApiError.fromJSON ^[[90m(/home/runner/work/cherry-studio/cherry-studio/^[[39msrc/shared/data/api/errors.ts:466:12^[[90m)^[[39m
+ ^[[32m✓^[[39m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/components/ErrorDetailModal/__tests__/isDiagnosticReportEligible.test.ts ^[[2m(^[[22m^[[2m22 tests^[[22m^[[2m)^[[22m^[[32m 87^[[2mms^[[22m^[[39m
+^[[22m^[[39mFailed to auto-rename note: Error: offline
+ ^[[32m✓^[[39m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/components/ErrorDetailModal/__tests__/diagnosticReportDescription.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[32m 99^[[2mms^[[22m^[[39m
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+TypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+TypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+TypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mCode highlighting unavailable; displaying plain text Error: Highlight session closed
+^[[22m^[[39mCode highlighting unavailable; displaying plain text Error: Highlight session closed
+^[[90mstderr^[[2m | src/renderer/pages/settings/__tests__/ComputerUseSettings.test.tsx^[[2m > ^[[22m^[[2mComputer Use permission settings^[[2m > ^[[22m^[[2mshows a query failure and allows an explicit permission recheck to recover
+^[[22m^[[39mPermission query failed Error: runtime missing
+^[[90mstderr^[[2m | src/renderer/pages/settings/__tests__/ComputerUseSettings.test.tsx^[[2m > ^[[22m^[[2mComputer Use permission settings^[[2m > ^[[22m^[[2msurfaces a failed request without retrying the system interaction
+^[[22m^[[39mPermission request failed Error: cancelled
+^[[90mstderr^[[2m | src/renderer/hooks/__tests__/useKnowledgeBaseReorder.test.tsx^[[2m > ^[[22m^[[2mknowledge base cached ordering^[[2m > ^[[22m^[[2mshows refreshes during a pending move and reconciles completion (failure=true)
+^[[22m^[[39mmove failed for /knowledge-bases id=c, rolling back {
+  error: Error: move rejected
+^[[90mstderr^[[2m | src/renderer/components/chat/messages/hooks/__tests__/useMessagePlatformActions.test.tsx^[[2m > ^[[22m^[[2museMessagePlatformActions^[[2m > ^[[22m^[[2mretries rich clipboard writes without custom formats when custom formats fail
+^[[22m^[[39mFailed to write composer clipboard custom formats, falling back to text-only data Error: custom format unsupported
+^[[22m^[[39mFailed to read Mermaid file: /ws/flow.mmd Error: EACCES
+^[[90mstderr^[[2m | src/renderer/services/__tests__/MermaidRenderService.test.ts^[[2m > ^[[22m^[[2mMermaidRenderService^[[2m > ^[[22m^[[2mfails the current render when the worker crashes and recovers for the next one
+^[[22m^[[39mMermaid worker failed Error: boom
+^[[22m^[[39mstreamOpen IPC failed Error: ipc boom
+Error: Not implemented: window.scrollTo
+Error: Not implemented: window.scrollTo
+ ^[[32m✓^[[39m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/components/layout/__tests__/RouteErrorFallback.test.tsx ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[32m 241^[[2mms^[[22m^[[39m
+^[[90mstderr^[[2m | src/renderer/hooks/__tests__/useToolApprovalBridge.test.ts^[[2m > ^[[22m^[[2museToolApprovalBridge^[[2m > ^[[22m^[[2mthrows when delivery to main fails
+^[[90mstderr^[[2m | src/renderer/hooks/__tests__/useNotesSettings.test.ts^[[2m > ^[[22m^[[2museNotesSettings^[[2m > ^[[22m^[[2mshows one error toast when settings persistence fails
+^[[22m^[[39mFailed to update notes settings Error: persist failed
+^[[90mstderr^[[2m | src/renderer/components/markdown/__tests__/MarkdownTable.test.tsx^[[2m > ^[[22m^[[2mMarkdown table host capabilities^[[2m > ^[[22m^[[2mreports a failed copy and permits retry
+  error: Error: Clipboard unavailable
+^[[90mstderr^[[2m | src/renderer/hooks/__tests__/useShowWorkspace.test.ts^[[2m > ^[[22m^[[2museShowWorkspace^[[2m > ^[[22m^[[2mshows an error toast when workspace visibility persistence fails
+^[[22m^[[39mFailed to update notes workspace visibility Error: persist failed
+^[[31m⎯⎯⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Failed Tests 7 ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯⎯⎯^[[39m
+^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mrelabels a tab when another window renames its conversation
+^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mdrops a delayed cross-window rename after the tab navigated away
+^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mdrops a pending rename whose writer unmounted before it landed
+^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mignores a non-Chat route that happens to carry the same query key
+^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mleaves the label alone when the committed name is blank
+^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mkeeps the newest name when overlapping Chat renames resolve out of order
+^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m renderer ^[[49m^[[39m src/renderer/hooks/tab/__tests__/useConversationTabTitleChangeSync.test.tsx^[[2m > ^[[22museConversationTabTitleChangeSync^[[2m > ^[[22mkeeps the newest name when overlapping Work renames resolve out of order
+^[[31m^[[1mError^[[22m: [vitest] No "usePersistCacheReader" export is defined on the "@renderer/data/hooks/useCache" mock. Did you forget to return it from "vi.mock"?
+^[[2m Test Files ^[[22m ^[[1m^[[31m1 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m249 passed^[[39m^[[22m^[[90m (250)^[[39m
+^[[2m      Tests ^[[22m ^[[1m^[[31m7 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m3360 passed^[[39m^[[22m^[[90m (3367)^[[39m
+##[error]Error: [vitest] No "usePersistCacheReader" export is defined on the "@renderer/data/hooks/useCache" mock. Did you forget to return it from "vi.mock"?
+##[error]Error: [vitest] No "usePersistCacheReader" export is defined on the "@renderer/data/hooks/useCache" mock. Did you forget to return it from "vi.mock"?
+##[error]Error: [vitest] No "usePersistCacheReader" export is defined on the "@renderer/data/hooks/useCache" mock. Did you forget to return it from "vi.mock"?
+##[error]Error: [vitest] No "usePersistCacheReader" export is defined on the "@renderer/data/hooks/useCache" mock. Did you forget to return it from "vi.mock"?
+##[error]Error: [vitest] No "usePersistCacheReader" export is defined on the "@renderer/data/hooks/useCache" mock. Did you forget to return it from "vi.mock"?
+##[error]Error: [vitest] No "usePersistCacheReader" export is defined on the "@renderer/data/hooks/useCache" mock. Did you forget to return it from "vi.mock"?
+##[error]Error: [vitest] No "usePersistCacheReader" export is defined on the "@renderer/data/hooks/useCache" mock. Did you forget to return it from "vi.mock"?
+[ELIFECYCLE] Command failed with exit code 1.
+
+$ gh run view --job 128537322527 --log-failed   # package-test
+   ^[[33m^[[2m✓^[[22m^[[39m fails the platform gate when the real Playwright subprocess cannot acquire its owned application^[[33m 2411^[[2mms^[[22m^[[39m
+ ^[[32m✓^[[39m ^[[30m^[[42m shared ^[[49m^[[39m src/shared/ai/__tests__/providerError.test.ts ^[[2m(^[[22m^[[2m116 tests^[[22m^[[2m)^[[22m^[[32m 59^[[2mms^[[22m^[[39m
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+Error: Could not parse CSS stylesheet
+ ^[[31m❯^[[39m ^[[30m^[[45m ui ^[[49m^[[39m packages/ui/scripts/__tests__/validate-migration-contract.test.ts ^[[2m(^[[22m^[[2m29 tests^[[22m^[[2m | ^[[22m^[[31m1 failed^[[39m^[[2m)^[[22m^[[33m 490^[[2mms^[[22m^[[39m
+^[[31m     ^[[31m×^[[31m accepts the repository migration registry after compatibility bridge removal^[[39m^[[32m 100^[[2mms^[[22m^[[39m
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+TypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+TypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+TypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+TypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+TypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+TypeError: textRange(...).getClientRects is not a function
+ ^[[31m❯^[[39m ^[[30m^[[45m ui ^[[49m^[[39m packages/ui/scripts/__tests__/build-theme-css.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m | ^[[22m^[[31m1 failed^[[39m^[[2m)^[[22m^[[33m 481^[[2mms^[[22m^[[39m
+^[[31m     ^[[31m×^[[31m keeps the committed theme.css current^[[39m^[[33m 469^[[2mms^[[22m^[[39m
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+Error: Could not parse CSS stylesheet
+^[[22m^[[39mTypeError: textRange(...).getClientRects is not a function
+^[[31m⎯⎯⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Failed Tests 2 ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯⎯⎯^[[39m
+^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m ui ^[[49m^[[39m packages/ui/scripts/__tests__/build-theme-css.test.ts^[[2m > ^[[22mbuildThemeContractCss^[[2m > ^[[22mkeeps the committed theme.css current
+^[[31m^[[1mAssertionError^[[22m: promise rejected "Error: [theme-contract] renderer TypeScri…" instead of resolving^[[39m
+^[[31m^[[1mCaused by: Error^[[22m: [theme-contract] renderer TypeScript source src/renderer/pages/translate/components/__tests__/TranslateOutputPane.image.test.tsx cannot write shared theme variable --card; use a registered --cs-theme-* input or an owner-local --app-* variable^[[39m
+^[[41m^[[1m FAIL ^[[22m^[[49m ^[[30m^[[45m ui ^[[49m^[[39m packages/ui/scripts/__tests__/validate-migration-contract.test.ts^[[2m > ^[[22mvalidateMigrationContractSources^[[2m > ^[[22maccepts the repository migration registry after compatibility bridge removal
+^[[31m^[[1mAssertionError^[[22m: expected [Function] to not throw an error but 'Error: [theme-contract] renderer Type…' was thrown^[[39m
+"Error: [theme-contract] renderer TypeScript source src/renderer/pages/translate/components/__tests__/TranslateOutputPane.image.test.tsx cannot write shared theme variable --card; use a registered --cs-theme-* input or an owner-local --app-* variable"
+^[[2m Test Files ^[[22m ^[[1m^[[31m2 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m529 passed^[[39m^[[22m^[[90m (531)^[[39m
+^[[2m      Tests ^[[22m ^[[1m^[[31m2 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m7348 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m10 skipped^[[39m^[[90m (7360)^[[39m
+##[error]AssertionError: promise rejected "Error: [theme-contract] renderer TypeScri…" instead of resolving
+Caused by: Caused by: Error: [theme-contract] renderer TypeScript source src/renderer/pages/translate/components/__tests__/TranslateOutputPane.image.test.tsx cannot write shared theme variable --card; use a registered --cs-theme-* input or an owner-local --app-* variable
+##[error]AssertionError: expected [Function] to not throw an error but 'Error: [theme-contract] renderer Type…' was thrown
+"Error: [theme-contract] renderer TypeScript source src/renderer/pages/translate/components/__tests__/TranslateOutputPane.image.test.tsx cannot write shared theme variable --card; use a registered --cs-theme-* input or an owner-local --app-* variable"
+[ELIFECYCLE] Command failed with exit code 1.
+
+$ gh run view --job 128538847831 --log-failed   # render-test
+    "result": "failure",
+      throw new Error(`${group}: expected success, received ${results[group] ?? 'missing'}`)
+Error: renderer: expected success, received failure
+
+$ gh run view --job 128539453014 --log-failed   # general-test
+    "result": "failure",
+      throw new Error(`${group}: expected success, received ${results[group] ?? 'missing'}`)
+Error: packages: expected success, received failure

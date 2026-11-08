@@ -1,0 +1,386 @@
+$ gh pr checks https://github.com/github/gh-aw/pull/75774
+skipped    pre_activation
+success    pre_activation
+success    check-agent-local-settings
+success    check-agent-local-settings
+success    route
+success    checkout-cache
+success    checkout-cache
+success    checkout-cache
+success    checkout-cache
+success    checkout-cache
+success    checkout-cache
+success    Analyze (python)
+success    moderate
+success    pre_activation
+success    build
+success    pre_activation
+success    pre_activation
+success    prefetch
+success    pre_activation
+success    pre_activation
+success    pre_activation
+success    Compile queue phases
+skipped    admission
+skipped    admission
+skipped    deploy
+skipped    admission
+skipped    admission
+skipped    admission
+skipped    admission
+skipped    admission
+skipped    admission
+success    verify-integration-build
+success    verify-integration-build
+success    js-typecheck
+success    js-typecheck
+success    Build Windows CLI
+success    Build Windows CLI
+failure    impacted-go-tests
+cancelled  impacted-go-tests
+skipped    activation
+skipped    Windows Integration
+skipped    Windows Integration
+skipped    activation
+success    OTLP protobuf SDK compatibility
+success    OTLP protobuf SDK compatibility
+success    activation
+success    activation
+success    activation
+success    activation
+success    activation
+success    activation
+skipped    agent
+skipped    agent
+success    Native JavaScript and Actions parser tests
+success    Native JavaScript and Actions parser tests
+success    JS Tests (shard 1/8)
+success    JS Tests (shard 1/8)
+success    Summarize workflow timing
+success    Summarize workflow timing
+success    agent
+success    agent
+success    agent
+success    agent
+success    agent
+success    agent
+cancelled  JS Tests (shard 2/8)
+success    JS Tests (shard 2/8)
+success    JS Tests (shard 3/8)
+success    JS Tests (shard 3/8)
+success    JS Tests (shard 4/8)
+success    JS Tests (shard 4/8)
+success    JS Tests (shard 5/8)
+success    JS Tests (shard 5/8)
+success    JS Tests (shard 6/8)
+success    JS Tests (shard 6/8)
+success    JS Tests (shard 7/8)
+success    JS Tests (shard 7/8)
+success    JS Tests (shard 8/8)
+success    JS Tests (shard 8/8)
+cancelled  build
+skipped    evals
+skipped    detection
+success    build
+success    impacted-js-tests
+success    impacted-js-tests
+success    detection
+success    detection
+success    detection
+success    detection
+success    detection
+success    detection
+failure    build-wasm
+failure    build-wasm
+skipped    unlock
+skipped    evals
+success    Docker root-owned staging cleanup
+success    Docker root-owned staging cleanup
+success    evals
+success    safe_outputs
+success    evals
+success    evals
+success    evals
+success    evals
+failure    safe_outputs
+skipped    push_evals_state
+skipped    safe_outputs
+success    validate-yaml
+success    validate-yaml
+success    lint-js
+success    lint-js
+success    safe_outputs
+success    conclusion
+success    safe_outputs
+success    safe_outputs
+success    safe_outputs
+skipped    safe_outputs
+skipped    bench
+skipped    bench
+skipped    conclusion_admission
+skipped    push_evals_state
+success    Artifact API Integration
+success    Artifact API Integration
+success    push_evals_state
+success    push_evals_state
+success    push_evals_state
+success    push_evals_state
+success    push_evals_state
+skipped    conclusion
+skipped    conclusion
+success    Check validator file sizes
+success    Check validator file sizes
+success    NVX musl inference integration
+success    NVX musl inference integration
+success    conclusion
+success    conclusion
+success    conclusion
+success    conclusion
+success    conclusion
+skipped    conclusion_admission
+skipped    conclusion_admission
+skipped    conclusion_admission
+skipped    conclusion_admission
+skipped    conclusion_admission
+skipped    conclusion_admission
+skipped    conclusion_admission
+success    lint-go-format
+success    lint-go-format
+success    Cleanup checkout cache
+success    Cleanup checkout cache
+success    lint-go-golangci (0)
+success    lint-go-golangci (0)
+cancelled  lint-go-golangci (1)
+success    lint-go-golangci (1)
+success    lint-go-golangci (2)
+success    lint-go-golangci (2)
+success    lint-go-govulncheck
+success    lint-go-govulncheck
+success    lint-go-custom
+success    lint-go-custom
+success    lint-error-messages
+success    lint-error-messages
+success    actions-build
+success    actions-build
+skipped    fuzz
+skipped    fuzz
+success    mcp-server-compile-test
+success    mcp-server-compile-test
+success    Alpine Container Test
+success    Alpine Container Test
+success    safe-outputs-conformance
+success    safe-outputs-conformance
+skipped    Unit tests (${{ matrix.name }})
+skipped    Unit tests (${{ matrix.name }})
+skipped    security
+success    security
+skipped    Security Scan: ${{ matrix.tool.name }}
+skipped    Security Scan: ${{ matrix.tool.name }}
+skipped    Build & Test on ${{ matrix.os }}
+success    Build & Test on macos-latest
+success    Build & Test on windows-latest
+skipped    canary-go
+skipped    canary-go
+success    Summarize workflow timing
+success    Summarize workflow timing
+success    License compliance check
+
+$ gh run view --job 128568981654 --log-failed   # impacted-go-tests
+=== RUN   TestAICLimitParserObjectErrors/{"value":0}
+=== RUN   TestAICLimitParserObjectErrors/{"value":-1}
+=== RUN   TestAICLimitParserObjectErrors/{"value":"-1"}
+=== RUN   TestAICLimitParserObjectErrors/{"value":false}
+=== RUN   TestAICLimitParserObjectErrors/{"value":{}}
+--- PASS: TestAICLimitParserObjectErrors (0.00s)
+    --- PASS: TestAICLimitParserObjectErrors/{} (0.00s)
+    --- PASS: TestAICLimitParserObjectErrors/{"value":null} (0.00s)
+    --- PASS: TestAICLimitParserObjectErrors/{"value":0} (0.00s)
+    --- PASS: TestAICLimitParserObjectErrors/{"value":-1} (0.00s)
+    --- PASS: TestAICLimitParserObjectErrors/{"value":"-1"} (0.00s)
+    --- PASS: TestAICLimitParserObjectErrors/{"value":false} (0.00s)
+    --- PASS: TestAICLimitParserObjectErrors/{"value":{}} (0.00s)
+=== RUN   TestActivationBlockedVersionIssuePermissions/omits_issues_write_when_failure_issue_reporting_is_disabled
+    --- PASS: TestActivationBlockedVersionIssuePermissions/omits_issues_write_when_failure_issue_reporting_is_disabled (0.00s)
+Running impacted Go unit tests in github.com/github/gh-aw/pkg/workflow with pattern ^(TestAdmissionConclusionWorkQueueParticipant|TestAdmissionOptIn|TestAdmissionOutputGatingCompilesWithLint|TestAdmissionRejectsCodeGenerationSwitch|TestAdmissionReusableCallerPermissionsWithStaleWorkerLock|TestAdmissionSessionOutputs|TestAdmissionSkipSafeDownstreamConditions|TestAgentExecutionExitCodeTrap_EmitsErrorAnnotation|TestAgentFailureStepOmitsThreatDetectionAICEnvVarWhenDetectionDisabled|TestAgentFileValidation|TestAgentGitHubTokenAndSourceSharePrecedence|TestAgentJobPostStepsInferReadPermission|TestAgentJobPreStepsInferWithDefaultPermissions|TestAgentJobPreStepsWriteCommandErrors|TestAgentJobStepsInferReadPermission|TestAgentRxHashedDependencyEntry|TestAgenticWorkflowsErrorCases|TestAgenticWorkflowsExtractToolsEdgeCases|TestAgenticWorkflowsHasMCPServers|TestAgenticWorkflowsInstallStepIncludesGHToken|TestAgenticWorkflowsInstallStepPresentWithoutImport|TestAgenticWorkflowsMCPConfigGeneration|TestAgenticWorkflowsMCPWithGuardPoliciesJSON|TestAgenticWorkflowsNilSafety|TestAgenticWorkflowsSyntaxVariations|TestAgenticWorkflowsToolConfigJSONTags|TestAgenticWorkflowsWriteToolsRendering|TestAgyConformanceEntryPointsShareConfiguration|TestAgyDryRunAllowsBuiltInNativePermissions|TestAgyExperimentalDiagnosticIsInformational|TestAgyHarnessBoundsDescendantPipes|TestAgyHarnessPrivateConfigurationAndLiteralInput|TestAgyHarnessStdoutBufferGuard|TestAgyInstallationDoesNotMutateOptionalConfiguration|TestAgyNativeConformanceAllowlistMatchesServerTools|TestAgyNativeRuntimeConfiguration|TestAgyNativeRuntimeDefaults|TestAgyRejectsUnverifiedEngineProfiles|TestAgyRuntimeScriptsHaveValidSyntax|TestAgySmokeLabelCommandIsCentrallyRouted|TestAgySmokeSlashCommandIsCentrallyRouted|TestAgyStepSummaryIsolation|TestAgyUsesExistingGeminiProviderTarget|TestAiderCanonicalExtensionsAndPartialPublication|TestAiderCompiledHarnesses|TestAiderCoverageImprovementGates|TestAiderDailyGoValidationContracts|TestAiderEntrypointAcceptsOnlyShellConfirmations|TestAiderInterpretedShellEventsCannotOverrideRunnerEvidence|TestAiderNetworkRequiresPackageEcosystemOptIn|TestAiderSampleProviderExecution|TestAiderSessionCaptureIOWarningsDoNotCreateProviderObservations|TestAiderStreamAndSnapshotAttributionAcrossPublication|TestAiderWorkflowsUseSafeoutputsCLI|TestAllAgentExecutionSteps_ContainExitCodeAnnotation|TestAllCopilotWorkflowsUseOrgBilling|TestAllEcosystemDomainFunctions|TestAllEnginesEmitTimeoutMinutes|TestAllListEncodingForms|TestAllMissingSafeOutputTypesImport|TestAllNonGitHubMCPServersGetGuardPoliciesViaRenderer|TestAllNonGitHubMCPServersGetWriteSinkWhenGitHubHasAllowOnly|TestAllOTLPHeaders|TestAllVersionsInAwInfo|TestAllowFullHistoryFetch|TestAllowFullHistoryFetchIsHandlerScoped|TestAllowMergedBaseBaselineIsHandlerScoped|TestAllowWorkflowsAppTokenPermission|TestAllowWorkflowsCompileErrorWithoutGitHubApp|TestAllowWorkflowsParsing|TestAllowWorkflowsParsingPushToPullRequestBranch|TestAllowWorkflowsPermission|TestAllowWorkflowsValidationRequiresGitHubApp|TestAllowedDomainsInWorkflow|TestAllowedDomainsParsing|TestAllowedLabelsInSafeOutputsConfig|TestAllowedPullRequestTargetCheckoutFailsClosed|TestAndNode_Render|TestAndNode_Render_ComparisonNoParens|TestAndNode_Render_FunctionCallNoParens|TestAndNode_Render_OrNodeWrapped|TestAppTokenPermissionsCheckAllCompiledJobs|TestAppTokenPermissionsGeneratedOTLPAndSideRepoSteps|TestAppTokenPermissionsGeneratedTokenDefaults|TestAppTokenPermissionsPushToPullRequestBranch|TestAppTokenPermissionsUntrackedWildcardHelperDoesNotExemptSteps|TestAppTokenPermissionsWildcardStillChecksPermissionsAndOtherSteps|TestAppendEnvVarLine|TestAppendGitHubMCPTools|TestAppendThreatDetectionRWMount|TestAppendUniqueDomains|TestAppendYAMLLine|TestApplyActionPinToStep|TestApplyActionPinToTypedStep|TestApplyActionPinToTypedStepRejectsUnresolvedExactMapping|TestApplyActionPinToTypedStep_Immutability|TestApplyActionPinToTypedStep_NoOutdatedWarningForCurrentVersion|TestApplyActionPinToTypedStep_OutdatedWarning|TestApplyActionPinsToTypedSteps|TestApplyArtifactRetention|TestApplyBuiltinJobAugmentations_OverridesTimeoutMinutes|TestApplyBuiltinJobAugmentations_RejectsTimeoutMinutesExpression|TestApplyBuiltinJobNeedsAugmentations_AddsIfCondition|TestApplyBuiltinJobNeedsAugmentations_AddsNeedsAsArray|TestApplyBuiltinJobNeedsAugmentations_AddsNeedsAsString|TestApplyBuiltinJobNeedsAugmentations_BuiltinNoNeeds|TestApplyBuiltinJobNeedsAugmentations_CombinesIfCondition|TestApplyBuiltinJobNeedsAugmentations_DeduplicatesNeeds|TestApplyBuiltinJobNeedsAugmentations_HyphenAliasNormalized|TestApplyBuiltinJobNeedsAugmentations_IfPrefixStripped|TestApplyBuiltinJobNeedsAugmentations_InvalidConfigNotMap|TestApplyBuiltinJobNeedsAugmentations_InvalidIfTypeError|TestApplyBuiltinJobNeedsAugmentations_NilData|TestApplyBuiltinJobNeedsAugmentations_NilJobs|TestApplyBuiltinJobNeedsAugmentations_NonBuiltinJobIgnored|TestApplyBuiltinJobNeedsAugmentations_SelfReferenceError|TestApplyBuiltinJobNeedsAugmentations_StatusFuncAddsSuccessGuards|TestApplyBuiltinJobNeedsAugmentations_StatusFuncAlwaysAddsSuccessGuards|TestApplyBuiltinJobNeedsAugmentations_StatusFuncFailureAddsSuccessGuards|TestApplyBuiltinJobNeedsAugmentations_StatusFuncKeepsCustomJobUnguarded|TestApplyBuiltinJobNeedsAugmentations_TargetJobNotInManagerError|TestApplyBuiltinJobNeedsAugmentations_TargetJobNotInManager_IfOnlyReportsIfField|TestApplyBuiltinJobNeedsAugmentations_TargetJobNotInManager_NeedsOnlyReportsNeedsField|TestApplyBuiltinJobNeedsAugmentations_UnknownJobError|TestApplyContainerPins|TestApplyContainerPins_ContainerPinMappings|TestApplyContainerPins_DefaultFirewallVersion|TestApplyDefaultGitCommandsForSafeOutputs|TestApplyDefaultMaxAICreditsEnvToMap|TestApplyDefaultMaxAICreditsEnvToMapHandlesNilMap|TestApplyDefaultTools|TestApplyDefaultToolsBashWithGitAndDefaults|TestApplyDefaultToolsComplexScenarios|TestApplyDefaultToolsGitHubConfigPreservation|TestApplyDefaultToolsNilInputRecovery|TestApplyDefaultToolsNoLongerAddsDefaults|TestApplyDefaultToolsSteerEnablesIssueMCPAccess|TestApplyDefaultToolsSteerReEnablesGitHubMCP|TestApplyDefaults_DefaultTimeoutMinutesUsesActionVariable|TestApplyEngineHarnessRetryEnv|TestApplyEngineVersionEnv|TestApplyPreActivationIfConditionGuards|TestApplyPullRequestForkFilterMultipleEvents|TestApplyPullRequestStackFilter_ConfiguredMaxStack|TestApplyPullRequestStackFilter_ConfiguredMaxStackInArrayTriggerForm|TestApplyPullRequestStackFilter_DefaultMaxStack|TestApplyPullRequestStackFilter_Disabled|TestApplyPullRequestStackFilter_ExistingPreStepsAppended|TestApplyPullRequestStackFilter_NoPullRequestTrigger|TestApplyPullRequestStackFilter_PullRequestReviewConfiguredMaxStack|TestApplyPullRequestStackFilter_SimplePullRequestReviewTrigger|TestApplyPullRequestStackFilter_SimplePullRequestTrigger|TestApplyRuntimeOverrides|TestApplyRuntimeOverrides_Cooldown|TestApplyRuntimeOverrides_ExistingRequirementActionRepoOnlyClonesRuntime|TestApplyRuntimeOverrides_KnownRuntimeActionOverrides|TestApplyRuntimeOverrides_KnownRuntimeActionRepoOnly|TestApplySafeOutputEnvToMap|TestApplySandboxDefaults|TestApplyTraceContextEnvToMap|TestApplyWorkflowDispatchFallbacks|TestApproveWorkflowRunAllowedPullRequests|TestApproveWorkflowRunAllowedPullRequestsExpressionEmitsJSONArray|TestApproveWorkflowRunAllowedPullRequestsMixedLiteralsAndExpression|TestApproveWorkflowRunCommentDisabled|TestApproveWorkflowRunConfiguration|TestApproveWorkflowRunDefaultConfiguration|TestApproveWorkflowRunHandlerAuthentication|TestApproveWorkflowRunValidationConfig|TestArcDindDetectionHarnessRetryTelemetryCollection|TestArcDindFailureHandlerUsesDownloadedArtifactPaths|TestArcDindPostAgentStepsUseRunnerTempPaths|TestArcDindThreatDetectionFileRoundTrip|TestArcDindThreatDetectionUsesVerifiedBinary|TestArcDind_ProducerConsumerHomeParity|TestArtifactDownloadFallbackUsesNameWithDownloadArtifactV3|TestArtifactDownloadFallbackUsesPatternWhenSupported|TestArtifactDownloadSingleArtifactUsesExactName|TestArtifactRetentionDoesNotParseUnrelatedSteps|TestArtifactRetentionErrors)$
+=== RUN   TestApplyActionPinToTypedStep/local_action_ref_(./)_is_passed_through_unchanged
+=== RUN   TestApplyActionPinToTypedStep/docker_image_ref_is_passed_through_unchanged
+=== RUN   TestApplyActionPinToTypedStep/docker_image_ref_with_digest_is_passed_through_unchanged
+    --- PASS: TestApplyActionPinToTypedStep/local_action_ref_(./)_is_passed_through_unchanged (0.00s)
+    --- PASS: TestApplyActionPinToTypedStep/docker_image_ref_is_passed_through_unchanged (0.00s)
+    --- PASS: TestApplyActionPinToTypedStep/docker_image_ref_with_digest_is_passed_through_unchanged (0.00s)
+=== RUN   TestAgenticWorkflowsErrorCases
+=== RUN   TestAgenticWorkflowsErrorCases/agentic-workflows_with_false
+=== RUN   TestAgenticWorkflowsErrorCases/agentic-workflows_with_empty_map
+=== RUN   TestAgenticWorkflowsErrorCases/agentic-workflows_with_string_value
+--- PASS: TestAgenticWorkflowsErrorCases (0.00s)
+    --- PASS: TestAgenticWorkflowsErrorCases/agentic-workflows_with_false (0.00s)
+    --- PASS: TestAgenticWorkflowsErrorCases/agentic-workflows_with_empty_map (0.00s)
+    --- PASS: TestAgenticWorkflowsErrorCases/agentic-workflows_with_string_value (0.00s)
+=== RUN   TestArtifactRetentionErrors
+--- PASS: TestArtifactRetentionErrors (0.00s)
+=== RUN   TestApplyBuiltinJobNeedsAugmentations_UnknownJobError
+--- PASS: TestApplyBuiltinJobNeedsAugmentations_UnknownJobError (0.00s)
+=== RUN   TestApplyBuiltinJobNeedsAugmentations_SelfReferenceError
+--- PASS: TestApplyBuiltinJobNeedsAugmentations_SelfReferenceError (0.00s)
+=== RUN   TestApplyBuiltinJobNeedsAugmentations_TargetJobNotInManagerError
+--- PASS: TestApplyBuiltinJobNeedsAugmentations_TargetJobNotInManagerError (0.00s)
+=== RUN   TestApplyBuiltinJobNeedsAugmentations_InvalidIfTypeError
+--- PASS: TestApplyBuiltinJobNeedsAugmentations_InvalidIfTypeError (0.00s)
+=== RUN   TestAgentExecutionExitCodeTrap_EmitsErrorAnnotation
+--- PASS: TestAgentExecutionExitCodeTrap_EmitsErrorAnnotation (0.00s)
+=== RUN   TestAgentJobPreStepsWriteCommandErrors
+⚠ shell script validation failed in 'pre-steps'. Affected step(s): "Comment on PR"
+--- PASS: TestAgentJobPreStepsWriteCommandErrors (0.01s)
+⚠ shell script validation failed in 'pre-steps'. Affected step(s): "Get changed files"
+⚠ shell script validation failed in 'steps'. Affected step(s): "List issues"
+⚠ shell script validation failed in 'post-steps'. Affected step(s): "Show runs"
+=== RUN   TestAllowWorkflowsCompileErrorWithoutGitHubApp
+--- PASS: TestAllowWorkflowsCompileErrorWithoutGitHubApp (0.00s)
+=== RUN   TestArcDindThreatDetectionFileRoundTrip/engine_failure
+    --- PASS: TestArcDindThreatDetectionFileRoundTrip/engine_failure (0.03s)
+        	Error Trace:	/home/runner/work/gh-aw/gh-aw/pkg/workflow/threat_detection_arc_dind_script_test.go:200
+        	Error:      	Received unexpected error:
+--- FAIL: TestArcDindThreatDetectionUsesVerifiedBinary (0.06s)
+    --- FAIL: TestArcDindThreatDetectionUsesVerifiedBinary/verified (0.02s)
+FAIL
+FAIL	github.com/github/gh-aw/pkg/workflow	10.856s
+FAIL
+make: *** [Makefile:337: test-impacted-go] Error 1
+
+$ gh run view --job 128568278198 --log-failed   # build-wasm
+              process_safe_outputs_items_failed: ${{ steps.process_safe_outputs.outputs.items_failed }}
+              lockdown_check_failed: ${{ steps.generate_aw_info.outputs.lockdown_check_failed == 'true' }}
+              oauth_token_check_failed: ${{ steps.check-oauth-tokens.outputs.oauth_token_check_failed == 'true' }}
+              stale_lock_file_failed: ${{ steps.check-lock-file.outputs.stale_lock_file_failed == 'true' }}
+                    ## Test Requirements
+                    5. **File Writing Testing**: Create a test file `/tmp/gh-aw/agent/smoke-test-copilot-__GH_AW_GITHUB_RUN_ID__.txt` with content \"Smoke test passed for Copilot at $(date)\" (create the directory if it doesn't exist)
+                    8. **Build gh-aw**: Run `GOCACHE=/tmp/go-cache GOMODCACHE=/tmp/go-mod make build` to verify the agent can successfully build the gh-aw project (both caches must be set to /tmp because the default cache locations are not writable). If the command fails, mark this test as ❌ and report the failure.
+                         - Test results (✅ or ❌ for each test)
+                         - Overall status: PASS or FAIL
+                       - Overall status: PASS or FAIL
+                    4. Use the `send_slack_message` tool to send a brief summary message (e.g., \"Smoke test __GH_AW_GITHUB_RUN_ID__: All tests passed! ✅\")
+                if: success() || failure()
+                if: success() || failure()
+                if: success() || failure()
+                  set -euo pipefail
+                            \"patternError\": \"must be a valid git ref\"
+                            \"patternError\": \"must not be empty\"
+                  set -euo pipefail
+                  set -euo pipefail
+                    echo \"Error: Could not determine repository owner and name\" >&2
+                  set -euo pipefail
+                  set -euo pipefail
+                  set -eo pipefail
+                  set -o pipefail
+              # survives a failed or timed-out upload of the larger agent artifact
+              always() && (needs.agent.result != 'skipped' || needs.activation.result == 'failure' || needs.activation.outputs.lockdown_check_failed == 'true' ||
+              needs.activation.outputs.oauth_token_check_failed == 'true' || needs.activation.outputs.stale_lock_file_failed == 'true' ||
+              needs.activation.outputs.secret_verification_result == 'failed' || needs.activation.outputs.daily_ai_credits_exceeded == 'true' ||
+                if: always() && needs.detection.result != 'skipped' && (needs.detection.outputs.detection_reason == 'agent_failure' || needs.detection.outputs.detection_reason == 'parse_error' || needs.detection.outputs.detection_conclusion == '')
+              - name: Handle agent failure
+                id: handle_agent_failure
+                  GH_AW_ACTION_FAILURE_ISSUE_EXPIRES_HOURS: \"12\"
+                  GH_AW_ENGINE_SECRET_FAILURE_MESSAGE: \"**Alternative**: If your organization has a Copilot subscription, you can avoid the need for a personal access token by adding a top-level `permissions` block to your workflow file. This enables Copilot inference through the org using the built-in GitHub Actions token.\\n\\n```yaml\\npermissions:\\n  copilot-requests: write\\n```\\n\\nSee: https://github.github.com/gh-aw/reference/engines/#github-copilot-default\"
+                  GH_AW_LOCKDOWN_CHECK_FAILED: ${{ needs.activation.outputs.lockdown_check_failed }}
+                  GH_AW_OAUTH_TOKEN_CHECK_FAILED: ${{ needs.activation.outputs.oauth_token_check_failed }}
+                  GH_AW_STALE_LOCK_FILE_FAILED: ${{ needs.activation.outputs.stale_lock_file_failed }}
+                  GH_AW_FAILURE_REPORT_AS_ISSUE: \"true\"
+                  GH_AW_MISSING_TOOL_REPORT_AS_FAILURE: \"true\"
+                  GH_AW_MISSING_DATA_REPORT_AS_FAILURE: \"true\"
+                    const { main } = require(path.join(actionsDir, 'handle_agent_failure.cjs'));
+              - name: Report failed jobs
+                id: report_failed_jobs
+                  GH_AW_REPORT_FAILED_JOBS: \"true\"
+                    const { main } = require(path.join(actionsDir, 'report_failed_jobs.cjs'));
+                  GH_AW_JOB_DURATIONS: ${{ steps.report_failed_jobs.outputs.job_durations }}
+                if: always() && steps.upload-usage-artifact.outcome == 'failure'
+                if: always() && steps.upload-usage-artifact.outcome == 'failure'
+                  set -o pipefail
+                    _GH_AW_CHROOT_JSON=$(jq -c --arg src \"${RUNNER_TEMP}/gh-aw\" --arg user \"$(id -un)\" --argjson uid \"$(id -u)\" --argjson gid \"$(id -g)\" --arg home \"${RUNNER_TEMP}/gh-aw/home\" '.chroot={\"binariesSourcePath\":$src,\"identity\":{\"user\":$user,\"uid\":$uid,\"gid\":$gid,\"home\":$home}}' \"${RUNNER_TEMP}/gh-aw/awf-config.json\") || { echo \"chroot config patch failed\" >&2; exit 1; }
+              code_push_failure_count: ${{ steps.process_safe_outputs.outputs.code_push_failure_count }}
+              code_push_failure_errors: ${{ steps.process_safe_outputs.outputs.code_push_failure_errors }}
+              process_safe_outputs_items_failed: ${{ steps.process_safe_outputs.outputs.items_failed }}
+--- FAIL: TestWasmGolden_CompileFixtures (0.33s)
+    --- FAIL: TestWasmGolden_CompileFixtures/custom-safe-output-max-length (0.04s)
+    --- FAIL: TestWasmGolden_CompileFixtures/smoke-copilot (0.09s)
+    wasm_golden_test.go:419: skipping native compile for smoke-copilot.md: smoke-copilot.md:1:1: error: dispatch-workflow validation failed: dispatch-workflow: workflow 'haiku-printer' not found in /home/runner/work/gh-aw/gh-aw/pkg/workflow/testdata/.github/workflows
+FAIL
+FAIL	github.com/github/gh-aw/pkg/workflow	0.787s
+FAIL
+make: *** [Makefile:138: test-wasm-golden] Error 1
+
+$ gh run view --job 128568981313 --log-failed   # build-wasm
+              process_safe_outputs_items_failed: ${{ steps.process_safe_outputs.outputs.items_failed }}
+              lockdown_check_failed: ${{ steps.generate_aw_info.outputs.lockdown_check_failed == 'true' }}
+              oauth_token_check_failed: ${{ steps.check-oauth-tokens.outputs.oauth_token_check_failed == 'true' }}
+              stale_lock_file_failed: ${{ steps.check-lock-file.outputs.stale_lock_file_failed == 'true' }}
+                    ## Test Requirements
+                    5. **File Writing Testing**: Create a test file `/tmp/gh-aw/agent/smoke-test-copilot-__GH_AW_GITHUB_RUN_ID__.txt` with content \"Smoke test passed for Copilot at $(date)\" (create the directory if it doesn't exist)
+                    8. **Build gh-aw**: Run `GOCACHE=/tmp/go-cache GOMODCACHE=/tmp/go-mod make build` to verify the agent can successfully build the gh-aw project (both caches must be set to /tmp because the default cache locations are not writable). If the command fails, mark this test as ❌ and report the failure.
+                         - Test results (✅ or ❌ for each test)
+                         - Overall status: PASS or FAIL
+                       - Overall status: PASS or FAIL
+                    4. Use the `send_slack_message` tool to send a brief summary message (e.g., \"Smoke test __GH_AW_GITHUB_RUN_ID__: All tests passed! ✅\")
+                if: success() || failure()
+                if: success() || failure()
+                if: success() || failure()
+                  set -euo pipefail
+                            \"patternError\": \"must be a valid git ref\"
+                            \"patternError\": \"must not be empty\"
+                  set -euo pipefail
+                  set -euo pipefail
+                    echo \"Error: Could not determine repository owner and name\" >&2
+                  set -euo pipefail
+                  set -euo pipefail
+                  set -eo pipefail
+                  set -o pipefail
+              # survives a failed or timed-out upload of the larger agent artifact
+              always() && (needs.agent.result != 'skipped' || needs.activation.result == 'failure' || needs.activation.outputs.lockdown_check_failed == 'true' ||
+              needs.activation.outputs.oauth_token_check_failed == 'true' || needs.activation.outputs.stale_lock_file_failed == 'true' ||
+              needs.activation.outputs.secret_verification_result == 'failed' || needs.activation.outputs.daily_ai_credits_exceeded == 'true' ||
+                if: always() && needs.detection.result != 'skipped' && (needs.detection.outputs.detection_reason == 'agent_failure' || needs.detection.outputs.detection_reason == 'parse_error' || needs.detection.outputs.detection_conclusion == '')
+              - name: Handle agent failure
+                id: handle_agent_failure
+                  GH_AW_ACTION_FAILURE_ISSUE_EXPIRES_HOURS: \"12\"
+                  GH_AW_ENGINE_SECRET_FAILURE_MESSAGE: \"**Alternative**: If your organization has a Copilot subscription, you can avoid the need for a personal access token by adding a top-level `permissions` block to your workflow file. This enables Copilot inference through the org using the built-in GitHub Actions token.\\n\\n```yaml\\npermissions:\\n  copilot-requests: write\\n```\\n\\nSee: https://github.github.com/gh-aw/reference/engines/#github-copilot-default\"
+                  GH_AW_LOCKDOWN_CHECK_FAILED: ${{ needs.activation.outputs.lockdown_check_failed }}
+                  GH_AW_OAUTH_TOKEN_CHECK_FAILED: ${{ needs.activation.outputs.oauth_token_check_failed }}
+                  GH_AW_STALE_LOCK_FILE_FAILED: ${{ needs.activation.outputs.stale_lock_file_failed }}
+                  GH_AW_FAILURE_REPORT_AS_ISSUE: \"true\"
+                  GH_AW_MISSING_TOOL_REPORT_AS_FAILURE: \"true\"
+                  GH_AW_MISSING_DATA_REPORT_AS_FAILURE: \"true\"
+                    const { main } = require(path.join(actionsDir, 'handle_agent_failure.cjs'));
+              - name: Report failed jobs
+                id: report_failed_jobs
+                  GH_AW_REPORT_FAILED_JOBS: \"true\"
+                    const { main } = require(path.join(actionsDir, 'report_failed_jobs.cjs'));
+                  GH_AW_JOB_DURATIONS: ${{ steps.report_failed_jobs.outputs.job_durations }}
+                if: always() && steps.upload-usage-artifact.outcome == 'failure'
+                if: always() && steps.upload-usage-artifact.outcome == 'failure'
+                  set -o pipefail
+                    _GH_AW_CHROOT_JSON=$(jq -c --arg src \"${RUNNER_TEMP}/gh-aw\" --arg user \"$(id -un)\" --argjson uid \"$(id -u)\" --argjson gid \"$(id -g)\" --arg home \"${RUNNER_TEMP}/gh-aw/home\" '.chroot={\"binariesSourcePath\":$src,\"identity\":{\"user\":$user,\"uid\":$uid,\"gid\":$gid,\"home\":$home}}' \"${RUNNER_TEMP}/gh-aw/awf-config.json\") || { echo \"chroot config patch failed\" >&2; exit 1; }
+              code_push_failure_count: ${{ steps.process_safe_outputs.outputs.code_push_failure_count }}
+              code_push_failure_errors: ${{ steps.process_safe_outputs.outputs.code_push_failure_errors }}
+              process_safe_outputs_items_failed: ${{ steps.process_safe_outputs.outputs.items_failed }}
+--- FAIL: TestWasmGolden_CompileFixtures (0.31s)
+    --- FAIL: TestWasmGolden_CompileFixtures/custom-safe-output-max-length (0.04s)
+    --- FAIL: TestWasmGolden_CompileFixtures/smoke-copilot (0.09s)
+    wasm_golden_test.go:419: skipping native compile for smoke-copilot.md: smoke-copilot.md:1:1: error: dispatch-workflow validation failed: dispatch-workflow: workflow 'haiku-printer' not found in /home/runner/work/gh-aw/gh-aw/pkg/workflow/testdata/.github/workflows
+FAIL
+FAIL	github.com/github/gh-aw/pkg/workflow	0.747s
+FAIL
+make: *** [Makefile:138: test-wasm-golden] Error 1
+
+$ gh run view --job 128570602801 --log-failed   # safe_outputs
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Ignore missing branch failure: false
+Patch size validation passed
+Patch content validation passed
+##[error]✗ Message 1 (push_to_pull_request_branch) failed: Cannot verify branch protection rules for "copilot/detection-threat-category-messages": Resource not accessible by integration - https://docs.github.com/rest/branches/branch-protection#get-branch-protection. Reading classic branch protection requires a GitHub App installation token or fine-grained PAT with Administration: read repository permission; GITHUB_TOKEN cannot provide this permission. Push blocked to prevent accidental writes to protected branches.
+##[warning]⚠️ Code push operation 'push_to_pull_request_branch' failed — continuing with remaining safe outputs (add_comment messages will include a failure note)
+##[warning]1 message(s) failed to process
+Exported 1 code push failure(s)
+##[error]1 safe output(s) failed:
+Set output 'code_push_failure_count'
+Set output 'code_push_failure_errors'
+Set output 'process_safe_outputs_items_failed'

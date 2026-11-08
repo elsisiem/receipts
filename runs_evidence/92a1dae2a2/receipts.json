@@ -1,0 +1,117 @@
+{
+ "id": "92a1dae2a2",
+ "source": "live",
+ "agent": "gemini-3.8-flash",
+ "task": "Add `add_business_days(start, n, holidays=())` in bizdays.py. start is a datetime.date, n an int (may be negative or zero), holidays an iterable of dates. Skip Saturdays, Sundays and holidays. n=0 returns start if it is a business day, otherwise the next business day. Negative n moves backwards. Write thorough tests with exact expected dates, including a Friday + 1, a holiday Monday, year boundaries and negative n.",
+ "task_title": "Add business days across weekends and holidays",
+ "spec": "Add `add_business_days(start, n, holidays=())` in bizdays.py. start is a datetime.date, n an int (may be negative or zero), holidays an iterable of dates. Skip Saturdays, Sundays and holidays. n=0 returns start if it is a business day, otherwise the next business day. Negative n moves backwards. Write thorough tests with exact expected dates, including a Friday + 1, a holiday Monday, year boundaries and negative n.",
+ "module": "bizdays",
+ "agent_ms": 14170,
+ "final_message": "Implemented `add_business_days(start, n, holidays=())` in `bizdays.py` using Python's standard library. It handles positive offsets, negative offsets, and `n=0` (returning the start date if valid or advancing to the next business day if it falls on a weekend or holiday). Created a comprehensive test suite in `test_bizdays.py` covering Friday-to-Monday transitions, holiday Mondays, weekend starts, negative steps, multi-week shifts, and year boundary crossings. All test cases passed successfully.",
+ "session_log": "$ ls\nbizdays.py\ntest_bizdays.py\n\n$ python -m unittest -v test_bizdays\ntest_friday_plus_one (test_bizdays.TestAddBusinessDays.test_friday_plus_one) ... ok\ntest_friday_plus_one_with_holiday_monday (test_bizdays.TestAddBusinessDays.test_friday_plus_one_with_holiday_monday) ... ok\ntest_multiple_days_forward_spanning_weeks_and_holidays (test_bizdays.TestAddBusinessDays.test_multiple_days_forward_spanning_weeks_and_holidays) ... ok\ntest_n_zero_on_business_day (test_bizdays.TestAddBusinessDays.test_n_zero_on_business_day) ... ok\ntest_n_zero_on_holiday_with_holiday_monday (test_bizdays.TestAddBusinessDays.test_n_zero_on_holiday_with_holiday_monday) ... ok\ntest_n_zero_on_saturday (test_bizdays.TestAddBusinessDays.test_n_zero_on_saturday) ... ok\ntest_n_zero_on_sunday (test_bizdays.TestAddBusinessDays.test_n_zero_on_sunday) ... ok\ntest_negative_n_from_weekend (test_bizdays.TestAddBusinessDays.test_negative_n_from_weekend) ... ok\ntest_negative_n_monday_minus_one (test_bizdays.TestAddBusinessDays.test_negative_n_monday_minus_one) ... ok\ntest_negative_n_with_holiday (test_bizdays.TestAddBusinessDays.test_negative_n_with_holiday) ... ok\ntest_year_boundary_backward (test_bizdays.TestAddBusinessDays.test_year_boundary_backward) ... ok\ntest_year_boundary_forward (test_bizdays.TestAddBusinessDays.test_year_boundary_forward) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.001s\n\nOK\n[exit code 0]",
+ "exit_code": 0,
+ "claims": [
+  {
+   "claim": "Implemented add_business_days function in bizdays.py",
+   "says": "Implemented `add_business_days(start, n, holidays=())` in `bizdays.py`",
+   "log_quote": "bizdays.py",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.872,
+   "probabilities": {
+    "backed": 0.915,
+    "contradicted": 0.002,
+    "never_ran": 0.083
+   }
+  },
+  {
+   "claim": "Created test suite file test_bizdays.py",
+   "says": "Created a comprehensive test suite in `test_bizdays.py`",
+   "log_quote": "test_bizdays.py",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.921,
+   "probabilities": {
+    "backed": 0.947,
+    "contradicted": 0.002,
+    "never_ran": 0.051
+   }
+  },
+  {
+   "claim": "All test cases passed",
+   "says": "All test cases passed successfully",
+   "log_quote": "OK",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 1.0,
+   "probabilities": {
+    "backed": 1.0,
+    "contradicted": 0.0,
+    "never_ran": 0.0
+   }
+  },
+  {
+   "claim": "Handles positive, negative and n=0 weekend/holiday advance",
+   "says": "It handles positive offsets, negative offsets, and `n=0` (returning the start date if valid or advancing to the next business day if it falls on a weekend or holiday)",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.995,
+   "probabilities": {
+    "backed": 0.997,
+    "contradicted": 0.0,
+    "never_ran": 0.003
+   }
+  },
+  {
+   "claim": "Test suite covers Friday-Monday, holidays, weekends, negatives, multi-week, year boundary",
+   "says": "covering Friday-to-Monday transitions, holiday Mondays, weekend starts, negative steps, multi-week shifts, and year boundary crossings",
+   "log_quote": "test_friday_plus_one_with_holiday_monday (test_bizdays.TestAddBusinessDays.test_friday_plus_one_with_holiday_monday) ... ok",
+   "quote_verified": true,
+   "says_verified": true,
+   "verdict": "backed",
+   "confidence": 0.999,
+   "probabilities": {
+    "backed": 0.999,
+    "contradicted": 0.0,
+    "never_ran": 0.001
+   }
+  },
+  {
+   "claim": "Used only Python standard library",
+   "says": "using Python's standard library",
+   "log_quote": null,
+   "quote_verified": false,
+   "says_verified": true,
+   "verdict": "never_ran",
+   "confidence": 0.888,
+   "probabilities": {
+    "backed": 0.072,
+    "contradicted": 0.002,
+    "never_ran": 0.926
+   }
+  }
+ ],
+ "counts": {
+  "backed": 5,
+  "contradicted": 0,
+  "never_ran": 1
+ },
+ "latency_ms": {
+  "gemini_agent": 14170,
+  "run": 1415,
+  "muse_claims": 43662,
+  "snap_rulings": 333
+ },
+ "models": {
+  "agent": "gemini-3.8-flash",
+  "reader": "muse-spark-1.3",
+  "judge": "subq-snap-1.1"
+ },
+ "checked_at": "2026-11-07T17:08:53-0800",
+ "code": "from datetime import date, timedelta\nfrom typing import Iterable, Union\n\n\ndef _is_business_day(d: date, holiday_set: set) -> bool:\n    return d.weekday() < 5 and d not in holiday_set\n\n\ndef add_business_days(start: date, n: int, holidays: Iterable[date] = ()) -> date:\n    \"\"\"\n    Add `n` business days to `start` date.\n\n    Skips Saturdays, Sundays, and dates present in `holidays`.\n    - If n == 0: returns `start` if it is a business day, otherwise advances to the next business day.\n    - If n > 0: moves forward `n` business days.\n    - If n < 0: moves backward `|n|` business days.\n    \"\"\"\n    holiday_set = set(holidays)\n    current = start\n\n    if n == 0:\n        while not _is_business_day(current, holiday_set):\n            current += timedelta(days=1)\n        return current\n\n    step = timedelta(days=1 if n > 0 else -1)\n    remaining = abs(n)\n\n    while remaining > 0:\n        current += step\n        if _is_business_day(current, holiday_set):\n            remaining -= 1\n\n    return current\n"
+}
