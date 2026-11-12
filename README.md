@@ -104,6 +104,6 @@ Each run is saved under `runs_evidence/<id>/` with `final_message.md`, `session.
 
 ## Also built today: ONUS
 
-We started the day on **[ONUS](https://github.com/elsisiem/onus)** ([live](https://onus-registry.fly.dev)), a merge gate for AI-written code that implements law. It used the same idea: never trust the agent's own tests, check against an independent source. The example (Australia's Robodebt) was too niche, so we pivoted to receipts, which applies that idea to every coding agent.
+I started the day on **[ONUS](https://github.com/elsisiem/onus)** ([live](https://onus-registry.fly.dev)), a merge gate for AI-written code that implements law. It used the same idea: never trust the agent's own tests, check against an independent source. The example (Australia's Robodebt) was too niche, so I pivoted to receipts, which applies that idea to every coding agent.
 
 <sub>Built at the AIE Code Summit 2026 Hackathon (Cerebral Valley), 7 Nov 2026. Agent: Google Gemini. Claims: Meta Muse Spark. Rulings: Subquadratic Snap.</sub>
